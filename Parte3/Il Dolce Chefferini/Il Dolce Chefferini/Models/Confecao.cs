@@ -1,13 +1,15 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Il_Dolce_Chefferini.Models
 {
     public class Confecao
     {
+        [Key]
         public int id { get; set; }
-        public int userId { get; set; }
+        public int user { get; set; }
         public Receita receita { get; set; }
         public Avaliacao avaliacao { get; set; }
         public bool usouAjuda { get; set; }
@@ -19,8 +21,7 @@ namespace Il_Dolce_Chefferini.Models
 
         public Confecao(int user, Receita r)
         {
-            id = 0;
-            userId = user;
+            this.user = user;
             receita = r;
             avaliacao = new Avaliacao();
             usouAjuda = false;
@@ -30,10 +31,9 @@ namespace Il_Dolce_Chefferini.Models
             tempoEmPasso = new Dictionary<Passo, TimeSpan>();
         }
 
-        public Confecao(int id, int userId, Receita receita, Avaliacao avaliacao, bool usouAjuda, bool bemSucedida, int passoAtual, DateTime inicioPassoAtual, Dictionary<Passo, TimeSpan> tempoEmPasso)
+        public Confecao(int user, Receita receita, Avaliacao avaliacao, bool usouAjuda, bool bemSucedida, int passoAtual, DateTime inicioPassoAtual, Dictionary<Passo, TimeSpan> tempoEmPasso)
         {
-            this.id = id;
-            this.userId = userId;
+            this.user = user;
             this.receita = receita;
             this.avaliacao = avaliacao;
             this.usouAjuda = usouAjuda;
@@ -45,8 +45,8 @@ namespace Il_Dolce_Chefferini.Models
 
         public Confecao()
         {
-            this.id = 1;
-            this.userId = 1;
+            this.id = 0;
+            this.user = 0;
             this.receita = new Receita();
             this.avaliacao = new Avaliacao();
             this.usouAjuda = false;

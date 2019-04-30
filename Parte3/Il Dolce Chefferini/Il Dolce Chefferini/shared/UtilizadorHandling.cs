@@ -42,7 +42,7 @@ namespace Il_Dolce_Chefferini.shared
 
         public bool FinalizarConfecao(Confecao c)
         {
-            var u =  _context.utilizadores.Find(c.userId);
+            var u =  _context.utilizadores.Find(c.user);
             if (u == null)
                 return false;
             u.AdicionaConfecaoDeReceita(c);

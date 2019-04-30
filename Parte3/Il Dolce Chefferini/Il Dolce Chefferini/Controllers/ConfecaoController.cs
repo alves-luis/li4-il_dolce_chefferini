@@ -21,13 +21,12 @@ namespace Il_Dolce_Chefferini.Controllers
 
         // PUT: api/confecao/utilizador/id
         [HttpPost("/{user}/{id}")]
-        public ActionResult<Confecao> Inicia([FromBody] int userId)
+        public ActionResult<Confecao> Inicia(Confecao c)
         {
-            var c = new Confecao(userId,new Receita());
             bool success = _userContext.IniciarConfecao(c);
             if (!success)
                 return Conflict();
-            return CreatedAtAction(nameof(Inicia), new {user = c.userId, id = c.id}, c);
+            return CreatedAtAction(nameof(Inicia), new {user = c.user, id = c.id}, c);
         }
     }
 }
