@@ -16,7 +16,7 @@ namespace Il_Dolce_Chefferini.Controllers
         public ReceitaController(ReceitaContext context)
         {
             _context = context;
-            if (_context.Receitas.Count() == 0)
+            if (!_context.Receitas.Any())
             {
                 // creates a new receita if it's empty
                 _context.Receitas.Add(new Receita
@@ -62,15 +62,21 @@ namespace Il_Dolce_Chefferini.Controllers
             return CreatedAtAction(nameof(GetReceita), new { id = r.Id }, r);
         }
         
-        // POST: api/Receita/id
+        // PUT: api/Receita/id
         [HttpPut("{id}")]
         public async Task<IActionResult> PutReceita(int id, Receita r)
         {
             if (id != r.Id)
                 return BadRequest();
             
-            _context.Entry(r).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
+            if (_context.Receitas.Contains(r))
+            {
+                _context.Entry(r).State = EntityState.Modified;
+                await _context.SaveChangesAsync();
+            }
+            else
+                return BadRequest();
+             
 
             return NoContent();
         }

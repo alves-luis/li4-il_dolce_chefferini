@@ -1,19 +1,26 @@
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Il_Dolce_Chefferini.Models
 {
     public class Utilizador
     {
+        [Key]
         public int Id { get; set; }
         public string email { get; set; }
         public string password { get; set; }
+        // id da confecao -> nº de tentativas falhadas
+        [NotMapped]
         private Dictionary<int, int> tentativasFalhadas;
+        // id da confecao -> lista das confecoes
+        [NotMapped]
         private Dictionary<int, List<Confecao>> confecoesPorIdReceita;
 
-        public int GetTentativasDeReceita(int idReceita)
+        public int GetTentativasFalhadasDeReceita(int idReceita)
         {
-            tentativasFalhadas.TryGetValue(idReceita, out var numTentativas);
-            return numTentativas;
+            var success = tentativasFalhadas.TryGetValue(idReceita, out var numTentativas);
+            return success ? numTentativas : 0;
         }
 
         public int GetNumConfecoesDeReceita(int idReceita)
@@ -23,7 +30,7 @@ namespace Il_Dolce_Chefferini.Models
             return success ? confecoes.Count : 0;
         }
 
-        public bool AdicionaConfecaoDeReceita(Confecao c)
+        public void AdicionaConfecaoDeReceita(Confecao c)
         {
             if (!c.bemSucedida)
             {
@@ -37,7 +44,17 @@ namespace Il_Dolce_Chefferini.Models
                     tentativasFalhadas.Add(c.receita.Id,1);
                 }
             }
-             
+
+            var success = confecoesPorIdReceita.TryGetValue(c.receita.Id, out var confecoes);
+            if (success)
+            {
+                confecoes.Add(c);
+            }
+            else
+            {
+                List<Confecao> lista = new List<Confecao> {c};
+                confecoesPorIdReceita.Add(c.receita.Id,lista);
+            }
         }
     }
 }

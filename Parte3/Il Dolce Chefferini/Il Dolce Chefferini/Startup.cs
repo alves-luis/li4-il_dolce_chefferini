@@ -1,4 +1,6 @@
-﻿using Il_Dolce_Chefferini.Models;
+﻿using System;
+using Il_Dolce_Chefferini.Models;
+using Il_Dolce_Chefferini.shared;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -21,6 +23,7 @@ namespace Il_Dolce_Chefferini
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ReceitaContext>(opt => opt.UseInMemoryDatabase("ReceitasList"));
+            services.AddDbContext<UtilizadorContext>(opt => opt.UseInMemoryDatabase("Utilizadores"));
             services.AddMvc();
         }
 

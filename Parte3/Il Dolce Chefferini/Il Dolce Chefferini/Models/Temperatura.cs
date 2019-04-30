@@ -4,5 +4,11 @@ namespace Il_Dolce_Chefferini.Models
     {
         public int id { get; set; }
         public string nome { get; set; }
+
+        public Temperatura()
+        {
+            id = 1;
+            nome = "Quente";
+        }
     }
 }
