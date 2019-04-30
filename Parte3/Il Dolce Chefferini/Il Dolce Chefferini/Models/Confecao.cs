@@ -19,6 +19,7 @@ namespace Il_Dolce_Chefferini.Models
 
         public Confecao(int user, Receita r)
         {
+            id = 0;
             userId = user;
             receita = r;
             avaliacao = new Avaliacao();
