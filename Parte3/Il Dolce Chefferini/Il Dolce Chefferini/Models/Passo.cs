@@ -16,11 +16,7 @@ namespace Il_Dolce_Chefferini.Models
         public string aspetoEsperado { get; set; }
 
         [NotMapped]
-        public Receita receita
-        {
-            get => receita;
-            set => receitaId = value.id;
-        }
+        public Receita receita { get; set; }
         [NotMapped]
         public TimeSpan tempoEsperado { 
             get => TimeSpan.FromTicks(tempoEsperadoEmTicks);
@@ -28,5 +24,21 @@ namespace Il_Dolce_Chefferini.Models
         }
         
         public ICollection<IngredientePasso> ingredientes { get; set; }
+
+        public Passo()
+        {
+            receitaId = 1;
+            numeroSequencia = 1;
+        }
+
+        public Passo(Receita r, TimeSpan tempo, int nr, string desc, string localFicheiro)
+        {
+            receitaId = r.id;
+            numeroSequencia = nr;
+            descricao = desc;
+            tempoEsperado = tempo;
+            aspetoEsperado = localFicheiro;
+            receita = r;
+        }
     }
 }

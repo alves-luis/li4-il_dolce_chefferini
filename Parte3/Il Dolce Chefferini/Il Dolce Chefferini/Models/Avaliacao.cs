@@ -19,14 +19,21 @@ namespace Il_Dolce_Chefferini.Models
         public DateTime data { get; set; }
 
         [NotMapped]
-        public Confecao confecao
+        public Confecao confecao { get; set; }
+
+        public Avaliacao()
         {
-            get => confecao; 
-            set => confecaoId = value.id;
+            confecaoId = 1;
+            dificuldade = 0;
+            utilidadeAjudas = null;
+            grauSatisfacao = 0;
+            data = DateTime.Now;
+            confecao = new Confecao();
         }
         
         public Avaliacao(Confecao c, int dif, int grau)
         {
+            confecaoId = c.id;
             confecao = c;
             dificuldade = dif;
             grauSatisfacao = grau;

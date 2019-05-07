@@ -13,5 +13,13 @@ namespace Il_Dolce_Chefferini.Models
         // é comida ou utensílio
         [Required]
         public bool comida { get; set; }
+
+        public Ingrediente()
+        {
+            id = 1;
+            nome = "Ingrediente Default";
+            imagem = null;
+            comida = true;
+        }
     }
 }

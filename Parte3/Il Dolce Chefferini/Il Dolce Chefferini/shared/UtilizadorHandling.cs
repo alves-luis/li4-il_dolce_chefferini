@@ -9,9 +9,9 @@ namespace Il_Dolce_Chefferini.shared
 {
     public class UtilizadorHandling
     {
-        private readonly IlDolceChefferiniContext _context;
+        private readonly DolceChefferiniContext _context;
 
-        public UtilizadorHandling(IlDolceChefferiniContext context)
+        public UtilizadorHandling(DolceChefferiniContext context)
         {
             _context = context;
         }

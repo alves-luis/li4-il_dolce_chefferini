@@ -11,9 +11,9 @@ namespace Il_Dolce_Chefferini.Controllers
     [ApiController]
     public class ReceitaController : ControllerBase
     {
-        private readonly IlDolceChefferiniContext _context;
+        private readonly DolceChefferiniContext _context;
 
-        public ReceitaController(IlDolceChefferiniContext context)
+        public ReceitaController(DolceChefferiniContext context)
         {
             _context = context;
             if (!_context.receitas.Any())

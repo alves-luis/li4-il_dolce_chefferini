@@ -7,6 +7,7 @@ namespace Il_Dolce_Chefferini.Models
 {
     public class Receita
     {
+        
         public int id { get; set; }
         public string nome { get; set; }
         public string descricao { get; set; }
@@ -21,11 +22,7 @@ namespace Il_Dolce_Chefferini.Models
         public int temperaturaId { get; set; }
 
         [NotMapped]
-        public Temperatura temperatura
-        {
-            get => temperatura; 
-            set => temperaturaId = value.id;
-        }
+        public Temperatura temperatura { get; set; }
 
         [NotMapped]
         public TimeSpan tempoEsperado
@@ -39,15 +36,18 @@ namespace Il_Dolce_Chefferini.Models
         public Receita()
         {
             id = 1;
-            calorias = 20;
-            criador = "Admin";
-            descricao = "Receita gerada automaticamente";
-            grauDificuldade = 5;
-            hidratos = 20;
+            nome = "Receita Default";
+            descricao = "Isto é a receita default!";
+            grauDificuldade = 1;
+            calorias = 10;
             lipidos = 20;
-            nome = "Receita Automática";
-            proteinas = 20;
+            hidratos = 30;
+            proteinas = 40;
+            doses = 4;
+            criador = "Foo";
             temperatura = new Temperatura();
+            temperaturaId = temperatura.id;
+            tempoEsperado = TimeSpan.FromMinutes(5);
             passos = new List<Passo>();
         }
 

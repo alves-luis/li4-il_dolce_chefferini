@@ -15,9 +15,19 @@ namespace Il_Dolce_Chefferini.Models
         public bool almoco { get; set; }
 
         [NotMapped] 
-        public Utilizador utilizador;
+        public Utilizador utilizador { get; set; }
         [NotMapped]
-        public Receita receita;
+        public Receita receita { get; set; }
+
+        public Ementa()
+        {
+            utilizadorId = 1;
+            receitaId = 1;
+            diaDaSemana = "domingo";
+            almoco = true;
+            utilizador = new Utilizador();
+            receita = new Receita();
+        }
 
     }
 }

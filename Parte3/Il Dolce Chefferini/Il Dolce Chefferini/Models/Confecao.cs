@@ -11,7 +11,6 @@ namespace Il_Dolce_Chefferini.Models
         private static int _nextId;
         [Key]
         public int id { get; set; }
-
         public bool usouAjuda { get; set; }
         public bool bemSucedida { get; set; }
         [ForeignKey("Utilizador")]
@@ -25,56 +24,26 @@ namespace Il_Dolce_Chefferini.Models
         [NotMapped]
         public DateTime inicioPassoAtual { get; set; }
         [NotMapped]
-        public Utilizador utilizador
-        {
-            get => utilizador;
-            set => utilizadorId = value.id;
-        }
+        public Utilizador utilizador { get; set; }
 
         [NotMapped]
         public Receita receita { get; set; }
         
         public ICollection<ConfecaoPasso> tempoEmPasso { get; set; }
 
-        public Confecao(Utilizador u, Receita r)
-        {
-            id = _nextId++;
-            utilizador = u;
-            receita = r;
-            avaliacao = null;
-            usouAjuda = false;
-            bemSucedida = false;
-            passoAtual = 0;
-            inicioPassoAtual = DateTime.Now;
-            tempoEmPasso = new List<ConfecaoPasso>();
-        }
-
-        public Confecao(Utilizador utilizador, Receita receita, Avaliacao avaliacao, 
-            bool usouAjuda, bool bemSucedida, int passoAtual, 
-            DateTime inicioPassoAtual, ICollection<ConfecaoPasso> tempoEmPasso)
-        {
-            id = _nextId++;
-            this.utilizador = utilizador;
-            this.receita = receita;
-            this.avaliacao = avaliacao;
-            this.usouAjuda = usouAjuda;
-            this.bemSucedida = bemSucedida;
-            this.passoAtual = passoAtual;
-            this.inicioPassoAtual = inicioPassoAtual;
-            this.tempoEmPasso = tempoEmPasso;
-        }
-
         public Confecao()
         {
             id = _nextId++;
-            utilizador = new Utilizador();
-            receita = new Receita();
-            avaliacao = null;
             usouAjuda = false;
             bemSucedida = false;
-            passoAtual = 0;
+            utilizador = new Utilizador();
+            avaliacao = null;
+            passoAtual = 1;
             inicioPassoAtual = DateTime.Now;
+            receita = new Receita();
             tempoEmPasso = new List<ConfecaoPasso>();
+            utilizadorId = utilizador.id;
+            receitaId = receita.id;
         }
 
         // retorna o passo seguinte da confecao
