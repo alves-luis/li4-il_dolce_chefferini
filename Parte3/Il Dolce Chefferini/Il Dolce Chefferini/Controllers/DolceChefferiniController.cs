@@ -20,11 +20,11 @@ namespace Il_Dolce_Chefferini.Controllers
         [HttpPost]
         public async Task<IActionResult> IniciaConfecao([FromBody] Confecao c)
         {
-            Console.WriteLine(c.id);
             if (_context.confecoes.Any(conf => conf.id == c.id))
                 return Conflict();
             await _context.confecoes.AddAsync(c);
-            return CreatedAtAction(nameof(GetById), new {id = c.id}, c);
+            await _context.SaveChangesAsync();
+            return CreatedAtAction(nameof(GetById), new {c.id}, c);
         }
 
         [HttpGet]

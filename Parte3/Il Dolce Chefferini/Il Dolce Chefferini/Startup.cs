@@ -1,6 +1,4 @@
-﻿using System;
-using Il_Dolce_Chefferini.Models;
-using Il_Dolce_Chefferini.shared;
+﻿using Il_Dolce_Chefferini.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -29,10 +27,7 @@ namespace Il_Dolce_Chefferini
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+            if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
 
             app.UseMvcWithDefaultRoute();
         }

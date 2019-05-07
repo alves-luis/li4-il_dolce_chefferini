@@ -1,10 +1,14 @@
-
 using Microsoft.EntityFrameworkCore;
 
 namespace Il_Dolce_Chefferini.Models
 {
     public class DolceChefferiniContext : DbContext
     {
+        public DolceChefferiniContext(DbContextOptions<DolceChefferiniContext> options)
+            : base(options)
+        {
+        }
+
         public DbSet<Utilizador> utilizadores { get; set; }
         public DbSet<Receita> receitas { get; set; }
         public DbSet<Ingrediente> ingredientes { get; set; }
@@ -15,12 +19,6 @@ namespace Il_Dolce_Chefferini.Models
         public DbSet<Ementa> ementas { get; set; }
         public DbSet<ConfecaoPasso> passosDeConfecao { get; set; }
         public DbSet<IngredientePasso> ingredientesDePasso { get; set; }
-
-        public DolceChefferiniContext(DbContextOptions<DolceChefferiniContext> options) 
-            : base(options)
-        {
-            
-        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -65,15 +63,9 @@ namespace Il_Dolce_Chefferini.Models
             modelBuilder.Entity<IngredientePasso>(entity =>
             {
                 entity.HasKey(e => new {e.ingredienteId, e.receitaId, e.numeroSequenciaPasso});
-                
-            });
-            
-            modelBuilder.Entity<Passo>(entity =>
-            {
-                entity.HasKey(e => new {e.receitaId, e.numeroSequencia});
-                
             });
 
+            modelBuilder.Entity<Passo>(entity => { entity.HasKey(e => new {e.receitaId, e.numeroSequencia}); });
         }
     }
 }
