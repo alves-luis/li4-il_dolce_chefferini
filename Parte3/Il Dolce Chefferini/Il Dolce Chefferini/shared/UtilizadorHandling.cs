@@ -9,9 +9,9 @@ namespace Il_Dolce_Chefferini.shared
 {
     public class UtilizadorHandling
     {
-        private readonly UtilizadorContext _context;
+        private readonly IlDolceChefferiniContext _context;
 
-        public UtilizadorHandling(UtilizadorContext context)
+        public UtilizadorHandling(IlDolceChefferiniContext context)
         {
             _context = context;
         }
@@ -42,7 +42,7 @@ namespace Il_Dolce_Chefferini.shared
 
         public bool FinalizarConfecao(Confecao c)
         {
-            var u =  _context.utilizadores.Find(c.user);
+            var u =  _context.utilizadores.Find(c.utilizador);
             if (u == null)
                 return false;
             u.AdicionaConfecaoDeReceita(c);

@@ -7,23 +7,38 @@ namespace Il_Dolce_Chefferini.Models
 {
     public class Receita
     {
-        public int Id { get; set; }
+        public int id { get; set; }
         public string nome { get; set; }
         public string descricao { get; set; }
-        public TimeSpan tempoEsperado { get; set; }
+        public Int64 tempoEsperadoEmTicks { get; set; }
         public int grauDificuldade { get; set; }
         public int calorias { get; set; }
         public int lipidos { get; set; }
         public int hidratos { get; set; }
         public int proteinas { get; set; }
+        public int doses { get; set; }
         public string criador { get; set; }
-        public Temperatura temperatura { get; set; }
+        public int temperaturaId { get; set; }
+
         [NotMapped]
-        public List<Passo> passos { get; set; }
+        public Temperatura temperatura
+        {
+            get => temperatura; 
+            set => temperaturaId = value.id;
+        }
+
+        [NotMapped]
+        public TimeSpan tempoEsperado
+        {
+            get => TimeSpan.FromTicks(tempoEsperadoEmTicks);
+            set => tempoEsperadoEmTicks = value.Ticks;
+        }
+
+        public ICollection<Passo> passos { get; set; }
 
         public Receita()
         {
-            Id = 1;
+            id = 1;
             calorias = 20;
             criador = "Admin";
             descricao = "Receita gerada automaticamente";
@@ -42,6 +57,11 @@ namespace Il_Dolce_Chefferini.Models
                 return passos.ElementAt(ordem);
             
             return null;
+        }
+
+        public int GetNumeroDePassos()
+        {
+            return passos.Count;
         }
     }
 }

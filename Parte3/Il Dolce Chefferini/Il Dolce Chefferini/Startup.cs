@@ -22,8 +22,7 @@ namespace Il_Dolce_Chefferini
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ReceitaContext>(opt => opt.UseInMemoryDatabase("ReceitasList"));
-            services.AddDbContext<UtilizadorContext>(opt => opt.UseInMemoryDatabase("Utilizadores"));
+            services.AddDbContext<IlDolceChefferiniContext>(opt => opt.UseInMemoryDatabase("temp"));
             services.AddMvc();
         }
 

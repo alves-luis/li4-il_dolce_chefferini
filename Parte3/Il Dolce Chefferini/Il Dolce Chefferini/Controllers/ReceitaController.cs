@@ -11,15 +11,15 @@ namespace Il_Dolce_Chefferini.Controllers
     [ApiController]
     public class ReceitaController : ControllerBase
     {
-        private readonly ReceitaContext _context;
+        private readonly IlDolceChefferiniContext _context;
 
-        public ReceitaController(ReceitaContext context)
+        public ReceitaController(IlDolceChefferiniContext context)
         {
             _context = context;
-            if (!_context.Receitas.Any())
+            if (!_context.receitas.Any())
             {
                 // creates a new receita if it's empty
-                _context.Receitas.Add(new Receita
+                _context.receitas.Add(new Receita
                     {
                         calorias = 20, criador = "Admin", descricao = "Receita gerada automaticamente",
                         grauDificuldade = 5,
@@ -37,14 +37,14 @@ namespace Il_Dolce_Chefferini.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Receita>>> GetReceitas()
         {
-            return await _context.Receitas.ToListAsync();
+            return await _context.receitas.ToListAsync();
         }
         
         // GET: api/Receita/id
         [HttpGet("{id}")]
         public async Task<ActionResult<Receita>> GetReceita(int id)
         {
-            var receita = await _context.Receitas.FindAsync(id);
+            var receita = await _context.receitas.FindAsync(id);
 
             if (receita == null)
                 return NotFound();
@@ -56,20 +56,20 @@ namespace Il_Dolce_Chefferini.Controllers
         [HttpPost]
         public async Task<ActionResult<Receita>> PostReceita(Receita r)
         {
-            _context.Receitas.Add(r);
+            _context.receitas.Add(r);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetReceita), new { id = r.Id }, r);
+            return CreatedAtAction(nameof(GetReceita), new { id = r.id }, r);
         }
         
         // PUT: api/Receita/id
         [HttpPut("{id}")]
         public async Task<IActionResult> PutReceita(int id, Receita r)
         {
-            if (id != r.Id)
+            if (id != r.id)
                 return BadRequest();
             
-            if (_context.Receitas.Contains(r))
+            if (_context.receitas.Contains(r))
             {
                 _context.Entry(r).State = EntityState.Modified;
                 await _context.SaveChangesAsync();
