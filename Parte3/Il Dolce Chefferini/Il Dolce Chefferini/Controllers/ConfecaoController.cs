@@ -1,4 +1,3 @@
-using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Il_Dolce_Chefferini.Models;
@@ -8,15 +7,16 @@ namespace Il_Dolce_Chefferini.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class DolceChefferiniController : ControllerBase
+    public class ConfecaoController : ControllerBase
     {
         private readonly DolceChefferiniContext _context;
 
-        public DolceChefferiniController(DolceChefferiniContext context)
+        public ConfecaoController(DolceChefferiniContext context)
         {
             _context = context;
         }
 
+        // inicia uma nova confeção
         [HttpPost]
         public async Task<IActionResult> IniciaConfecao([FromBody] Confecao c)
         {
@@ -27,10 +27,14 @@ namespace Il_Dolce_Chefferini.Controllers
             return CreatedAtAction(nameof(GetById), new {c.id}, c);
         }
 
-        [HttpGet]
+        // retorna uma confecao dado um id
+        [HttpGet("{id}")]
         public async Task<ActionResult<Confecao>> GetById(int id)
         {
-            return null;
+            var c = await _context.confecoes.FindAsync(id);
+            if (c == null)
+                return NoContent();       
+            return c;
         }
     }
 }

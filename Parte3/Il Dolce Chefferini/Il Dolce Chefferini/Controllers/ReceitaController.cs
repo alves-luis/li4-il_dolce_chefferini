@@ -19,15 +19,7 @@ namespace Il_Dolce_Chefferini.Controllers
             if (!_context.receitas.Any())
             {
                 // creates a new receita if it's empty
-                _context.receitas.Add(new Receita
-                    {
-                        calorias = 20, criador = "Admin", descricao = "Receita gerada automaticamente",
-                        grauDificuldade = 5,
-                        hidratos = 20,
-                        lipidos = 20, nome = "Receita Automática",
-                        proteinas = 20, temperatura = new Temperatura()
-                    }
-                );
+                _context.receitas.Add(new Receita());
                 _context.SaveChanges();
             }
         }
