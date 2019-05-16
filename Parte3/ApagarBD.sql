@@ -19,4 +19,3 @@ DROP TABLE Passo;
 DROP TABLE Receita;
 DROP TABLE Temperatura;
 DROP TABLE Utilizador;
-

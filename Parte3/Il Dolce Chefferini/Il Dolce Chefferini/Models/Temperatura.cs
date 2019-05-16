@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace Il_Dolce_Chefferini.Models
 {
     public class Temperatura

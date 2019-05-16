@@ -16,12 +16,6 @@ namespace Il_Dolce_Chefferini.Controllers
         public ReceitaController(DolceChefferiniContext context)
         {
             _context = context;
-            if (!_context.receitas.Any())
-            {
-                // creates a new receita if it's empty
-                _context.receitas.Add(new Receita());
-                _context.SaveChanges();
-            }
         }
 
         // GET: api/Receita

@@ -17,8 +17,8 @@ namespace Il_Dolce_Chefferini.Models
         public DbSet<Temperatura> temperaturas { get; set; }
         public DbSet<Avaliacao> avaliacoes { get; set; }
         public DbSet<Ementa> ementas { get; set; }
-        public DbSet<ConfecaoPasso> passosDeConfecao { get; set; }
-        public DbSet<IngredientePasso> ingredientesDePasso { get; set; }
+        public DbSet<ConfecaoPasso> confecoesPassos { get; set; }
+        public DbSet<IngredientePasso> ingredientesPassos { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -65,7 +65,39 @@ namespace Il_Dolce_Chefferini.Models
                 entity.HasKey(e => new {e.ingredienteId, e.receitaId, e.numeroSequenciaPasso});
             });
 
-            modelBuilder.Entity<Passo>(entity => { entity.HasKey(e => new {e.receitaId, e.numeroSequencia}); });
+            modelBuilder.Entity<Passo>(entity =>
+            {
+                entity.HasKey(e => new {e.receitaId, e.numeroSequencia});
+            });
+
+            modelBuilder.Entity<Receita>(entity =>
+            {
+                entity.HasKey(e => e.id);
+                entity.Property(e => e.id)
+                    .IsRequired()
+                    .HasColumnName("id")
+                    .ValueGeneratedOnAdd();
+            });
+            
+            modelBuilder.Entity<Confecao>(entity =>
+            {
+                entity.HasKey(e => e.id);
+                entity.Property(e => e.id)
+                    .IsRequired()
+                    .HasColumnName("id")
+                    .ValueGeneratedOnAdd();
+            });
+            
+            modelBuilder.Entity<Avaliacao>(entity =>
+            {
+                entity.HasKey(e => e.confecaoId);
+                entity.HasOne(e => e.confecao);
+            });
+            
+            modelBuilder.Entity<Temperatura>(entity =>
+            {
+                entity.HasKey(e => e.id);
+            });
         }
     }
 }

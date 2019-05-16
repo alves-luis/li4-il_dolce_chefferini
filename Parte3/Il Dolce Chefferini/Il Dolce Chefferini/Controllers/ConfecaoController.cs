@@ -20,9 +20,7 @@ namespace Il_Dolce_Chefferini.Controllers
         [HttpPost]
         public async Task<IActionResult> IniciaConfecao([FromBody] Confecao c)
         {
-            if (_context.confecoes.Any(conf => conf.id == c.id))
-                return Conflict();
-            await _context.confecoes.AddAsync(c);
+            _context.confecoes.Add(c);
             await _context.SaveChangesAsync();
             return CreatedAtAction(nameof(GetById), new {c.id}, c);
         }
