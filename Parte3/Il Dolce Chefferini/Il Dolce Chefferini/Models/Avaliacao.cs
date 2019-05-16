@@ -26,7 +26,7 @@ namespace Il_Dolce_Chefferini.Models
             utilidadeAjudas = null;
         }
 
-        [ForeignKey("Confecao")] [Key] public int confecaoId { get; set; }
+        [ForeignKey("Confecao")] public int confecaoId { get; set; }
 
         [Required] public int dificuldade { get; set; }
 

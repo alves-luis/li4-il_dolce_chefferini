@@ -9,7 +9,7 @@ namespace Il_Dolce_Chefferini.Controllers
     {
         public IActionResult Index()
         {
-            return View("../Confecao/Passo");
+            return View();
         }
     }
 }
