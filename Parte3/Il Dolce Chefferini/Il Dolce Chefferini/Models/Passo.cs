@@ -12,7 +12,7 @@ namespace Il_Dolce_Chefferini.Models
             numeroSequencia = 1;
         }
 
-        public Passo(Receita r, TimeSpan tempo, int nr, string desc, string localFicheiro)
+        public Passo(Receita r, TimeSpan tempo, int nr, string desc, string localFicheiro, string video)
         {
             receitaId = r.id;
             numeroSequencia = nr;
@@ -20,11 +20,13 @@ namespace Il_Dolce_Chefferini.Models
             tempoEsperado = tempo;
             aspetoEsperado = localFicheiro;
             receita = r;
+            urlVideo = video;
         }
 
         public int receitaId { get; set; }
         public int numeroSequencia { get; set; }
         public string descricao { get; set; }
+        public string urlVideo { get; set; }
 
         public long tempoEsperadoEmTicks { get; set; }
 
