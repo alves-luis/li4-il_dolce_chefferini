@@ -16,5 +16,13 @@ namespace Il_Dolce_Chefferini.Controllers
             var receitas = await response.Content.ReadAsAsync<IEnumerable<Receita>>();
             return View(receitas);
         }
+
+        public async Task<ActionResult> Receita(int id)
+        {
+            var client = new HttpClient();
+            var response = await client.GetAsync("http://localhost:5000/api/Receitas/" + id);
+            var receita = await response.Content.ReadAsAsync<Receita>();
+            return View(receita);
+        }
     }
 }
