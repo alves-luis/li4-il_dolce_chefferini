@@ -1,0 +1,40 @@
+@model System.Collections.Generic.IEnumerable<Il_Dolce_Chefferini.Models.Receita>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>title</title>
+</head>
+<body>
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Nome</th>
+            <th>Descriçao</th>
+            <th>Imagem</th>
+        </tr>
+        </thead>
+        @foreach (var r in Model)
+        {
+            <tr>
+                <td>
+                    <a asp-controller="Receita" asp-action="Receita" asp-route-id="@r.id">@r.id</a>
+                </td>
+                <td>
+                    <a asp-controller="Receita" asp-action="Receita" asp-route-id="@r.id">@r.nome</a>
+                </td>
+                <td>
+                    @r.descricao
+                </td>
+                <td>
+                    <img src="@r.imagem" class="img-responsive" alt="@r.nome" height="144px" width="256px"/>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+</body>
+</html>

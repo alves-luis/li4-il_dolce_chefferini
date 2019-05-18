@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Il_Dolce_Chefferini.Views
+namespace Workshop2019UMParte1.Views
 {
     public class IndexModel : PageModel
     {

@@ -23,6 +23,7 @@ namespace Il_Dolce_Chefferini.Models
             temperaturaId = temperatura.id;
             tempoEsperado = TimeSpan.FromMinutes(5);
             passos = new List<Passo>();
+            imagem = "pictures/tiramissu.jpg";
         }
 
         public int id { get; set; }
@@ -37,6 +38,7 @@ namespace Il_Dolce_Chefferini.Models
         public int doses { get; set; }
         public string criador { get; set; }
         public int temperaturaId { get; set; }
+        public string imagem { get; set; }
 
         [NotMapped] public Temperatura temperatura { get; set; }
 
