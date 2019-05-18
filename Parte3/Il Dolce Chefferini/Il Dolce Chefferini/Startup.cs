@@ -31,6 +31,7 @@ namespace Il_Dolce_Chefferini
             if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
 
             app.UseMvcWithDefaultRoute();
+            app.UseStaticFiles();
         }
     }
 }
