@@ -25,14 +25,17 @@ namespace Il_Dolce_Chefferini.Models
             passo = p;
         }
 
+        [ForeignKey("Receita")]
         public int receitaId { get; set; }
+        [ForeignKey("Passo")]
         public int numeroSequenciaPasso { get; set; }
+        [ForeignKey("Ingrediente")]
         public int ingredienteId { get; set; }
         public int quantidade { get; set; }
         public string unidade { get; set; }
 
-        [NotMapped] public Ingrediente ingrediente { get; set; }
+        public Ingrediente ingrediente { get; set; }
 
-        [NotMapped] public Passo passo { get; set; }
+        public Passo passo { get; set; }
     }
 }

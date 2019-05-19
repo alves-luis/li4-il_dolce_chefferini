@@ -92,6 +92,10 @@ namespace Il_Dolce_Chefferini.Models
                     .IsRequired()
                     .HasColumnName("unidade")
                     .HasMaxLength(32);
+
+                entity.HasOne(p => p.passo).WithMany(e => e.ingredientes);
+                entity.HasOne(p => p.ingrediente);
+
             });
 
             modelBuilder.Entity<Passo>(entity =>
@@ -121,8 +125,7 @@ namespace Il_Dolce_Chefferini.Models
                     .HasColumnName("urlVideo")
                     .HasMaxLength(512);
 
-               /* entity.HasMany(e => e.ingredientesPassos)
-                     .WithOne(); */
+                entity.HasMany(e => e.ingredientes);
             });
 
             modelBuilder.Entity<Receita>(entity =>
@@ -177,8 +180,8 @@ namespace Il_Dolce_Chefferini.Models
                     .HasColumnName("criador")
                     .HasMaxLength(64);
 
-               /* entity.HasMany(e => e.passo)
-                    .WithOne(); */
+               entity.HasMany(e => e.passos)
+                   .WithOne(p => p.receita);
 
             });
             

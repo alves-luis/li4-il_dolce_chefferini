@@ -1,4 +1,5 @@
-﻿using Il_Dolce_Chefferini.Models;
+﻿using System;
+using Il_Dolce_Chefferini.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -15,6 +16,7 @@ namespace Il_Dolce_Chefferini
         }
 
         public IConfiguration Configuration { get; set; }
+        
 
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
@@ -33,5 +35,7 @@ namespace Il_Dolce_Chefferini
             app.UseMvcWithDefaultRoute();
             app.UseStaticFiles();
         }
+
+        
     }
 }

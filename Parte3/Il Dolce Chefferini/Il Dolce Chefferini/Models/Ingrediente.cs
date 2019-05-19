@@ -12,6 +12,13 @@ namespace Il_Dolce_Chefferini.Models
             comida = true;
         }
 
+        public Ingrediente(int ID, string nom, bool comid)
+        {
+            id = ID;
+            nome = nom;
+            comida = comid;
+        }
+
         [Key] public int id { get; set; }
 
         [Required] public string nome { get; set; }

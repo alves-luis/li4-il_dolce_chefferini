@@ -25,6 +25,7 @@ namespace Il_Dolce_Chefferini.Models
             urlVideo = video;
         }
 
+        [ForeignKey("Receita")]
         public int receitaId { get; set; }
         public int numeroSequencia { get; set; }
         public string descricao { get; set; }
@@ -35,7 +36,7 @@ namespace Il_Dolce_Chefferini.Models
         // localização do ficheiro com a imagem do aspeto esperado
         public string aspetoEsperado { get; set; }
 
-        [NotMapped] public Receita receita { get; set; }
+        public Receita receita { get; set; }
 
         [NotMapped]
         public TimeSpan tempoEsperado

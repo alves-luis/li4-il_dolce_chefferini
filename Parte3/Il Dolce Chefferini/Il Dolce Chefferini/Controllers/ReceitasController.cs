@@ -24,13 +24,6 @@ namespace Il_Dolce_Chefferini.Controllers
         public async Task<ActionResult<IEnumerable<Receita>>> GetReceitas()
         {
             var receitas = await _context.receitas.ToListAsync();
-            if (receitas.Count == 0)
-            {
-                Receita r = new Receita();
-                receitas.Add(r);
-                _context.receitas.Add(r);
-                await _context.SaveChangesAsync();
-            }
 
             return receitas;
         }

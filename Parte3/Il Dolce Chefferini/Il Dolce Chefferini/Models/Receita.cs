@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Il_Dolce_Chefferini.Models
 {
@@ -23,7 +24,6 @@ namespace Il_Dolce_Chefferini.Models
             temperaturaId = temperatura.id;
             tempoEsperado = TimeSpan.FromMinutes(5);
             passos = new List<Passo>();
-            passos.Add(new Passo());
             imagem = "pictures/tiramissu.jpg";
         }
 
@@ -38,10 +38,11 @@ namespace Il_Dolce_Chefferini.Models
         public int proteinas { get; set; }
         public int doses { get; set; }
         public string criador { get; set; }
+        [ForeignKey("Temperatura")]
         public int temperaturaId { get; set; }
         public string imagem { get; set; }
 
-        [NotMapped] public Temperatura temperatura { get; set; }
+        public Temperatura temperatura { get; set; }
 
         [NotMapped]
         public TimeSpan tempoEsperado
@@ -50,7 +51,7 @@ namespace Il_Dolce_Chefferini.Models
             set => tempoEsperadoEmTicks = value.Ticks;
         }
 
-        public ICollection<Passo> passos { get; set; }
+        public virtual ICollection<Passo> passos { get; set; }
 
         public Passo GetPasso(int ordem)
         {
