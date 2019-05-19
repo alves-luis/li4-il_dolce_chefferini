@@ -1,0 +1,37 @@
+@model System.Collections.Generic.HashSet<Il_Dolce_Chefferini.Models.IngredientePasso>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Ingredientes</title>
+</head>
+<body>
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Quantidade</th>
+            <th>Unidade</th>
+        </tr>
+        </thead>
+        @foreach (var r in Model)
+        {
+            <tr>
+                <td>
+                    @r.ingrediente.nome
+                </td>
+                <td>
+                    @r.quantidade
+                </td>
+                <td>
+                    @r.unidade
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+</body>
+</html>

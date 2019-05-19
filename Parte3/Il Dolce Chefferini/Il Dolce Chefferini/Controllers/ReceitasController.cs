@@ -29,7 +29,7 @@ namespace Il_Dolce_Chefferini.Controllers
                 Receita r = new Receita();
                 receitas.Add(r);
                 _context.receitas.Add(r);
-                _context.SaveChangesAsync();
+                await _context.SaveChangesAsync();
             }
 
             return receitas;

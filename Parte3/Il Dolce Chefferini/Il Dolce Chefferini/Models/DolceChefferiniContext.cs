@@ -43,7 +43,7 @@ namespace Il_Dolce_Chefferini.Models
                 entity.HasMany(e => e.confecoes)
                     .WithOne();
 
-                entity.HasOne(e => e.ementas)
+                entity.HasOne(e => e.ementa)
                     .WithOne();
             });
 
@@ -231,7 +231,7 @@ namespace Il_Dolce_Chefferini.Models
 
                 entity.Property(e => e.nome)
                     .IsRequired()
-                    .HasColumn("nome")
+                    .HasColumnName("nome")
                     .HasMaxLength(64);
             });
 
@@ -248,10 +248,6 @@ namespace Il_Dolce_Chefferini.Models
                     .IsRequired()
                     .HasColumnName("nome")
                     .HasMaxLength(255);
-
-                entity.Property(e => e.imagem)
-                    .HasColumnName("image")
-                    .HasMaxLength(128);
 
                 entity.Property(e => e.comida)
                     .IsRequired()
