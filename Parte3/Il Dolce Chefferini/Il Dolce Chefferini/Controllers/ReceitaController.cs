@@ -30,21 +30,10 @@ namespace Il_Dolce_Chefferini.Controllers
         public async Task<ActionResult> Ingredientes(int id)
         {
             var client = new HttpClient();
-            var response = await client.GetAsync("http://localhost:5000/api/Receitas/" + id);
-            Receita receita = await response.Content.ReadAsAsync<Receita>();
-            ICollection<Passo> passos = receita.passos;
-            HashSet<IngredientePasso> result = new HashSet<IngredientePasso>();
-            foreach (Passo passo in passos)
-            {
-                var ingredientespasso = passo.ingredientes;
-                
-                foreach (var ipasso in ingredientespasso)
-                {
-                    result.Add(ipasso);
-                }
-            }
+            var response = await client.GetAsync("http://localhost:5000/api/Receitas/" + id + "/ingredientes");
+            var ingredientes = await response.Content.ReadAsAsync<IEnumerable<IngredientePasso>>();
 
-            return View(result);
+            return View(ingredientes);
         }
     }
 }

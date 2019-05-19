@@ -11,7 +11,6 @@ namespace Il_Dolce_Chefferini.Models
             ingredienteId = 1;
             quantidade = 1;
             unidade = "kg";
-            ingrediente = new Ingrediente();
         }
 
         public IngredientePasso(Ingrediente i, Passo p, int qt, string un)

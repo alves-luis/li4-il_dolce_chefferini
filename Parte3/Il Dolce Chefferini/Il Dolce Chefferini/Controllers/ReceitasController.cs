@@ -40,6 +40,30 @@ namespace Il_Dolce_Chefferini.Controllers
             return receita;
         }
 
+        [HttpGet("{id}/passos")]
+        public ActionResult<IEnumerable<Passo>> GetPassos(int id)
+        {
+            List<Passo> result = new List<Passo>();
+            var passos = _context.passos.Where(p => p.receitaId == id);
+            foreach (var p in passos)
+            {
+                result.Append(p);
+            }
+            return result;
+        }
+        
+        [HttpGet("{id}/ingredientes")]
+        public ActionResult<IEnumerable<IngredientePasso>> GetIngredientes(int id)
+        {
+            List<IngredientePasso> result = new List<IngredientePasso>();
+            var ingredientes = _context.ingredientesPassos.Where(p => p.receitaId == id);
+            foreach (var p in ingredientes)
+            {
+                result.Append(p);
+            }
+            return result;
+        }
+
         // POST: api/Receita
         [HttpPost]
         public async Task<ActionResult<Receita>> PostReceita(Receita r)

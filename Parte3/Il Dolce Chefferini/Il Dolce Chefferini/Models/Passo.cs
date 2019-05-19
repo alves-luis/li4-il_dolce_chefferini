@@ -11,7 +11,6 @@ namespace Il_Dolce_Chefferini.Models
             receitaId = 1;
             numeroSequencia = 1;
             ingredientes = new List<IngredientePasso>();
-            ingredientes.Add(new IngredientePasso());
         }
 
         public Passo(Receita r, TimeSpan tempo, int nr, string desc, string localFicheiro, string video)
