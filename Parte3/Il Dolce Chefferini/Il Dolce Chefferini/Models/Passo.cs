@@ -36,7 +36,7 @@ namespace Il_Dolce_Chefferini.Models
         // localização do ficheiro com a imagem do aspeto esperado
         public string aspetoEsperado { get; set; }
 
-        public Receita receita { get; set; }
+        public virtual Receita receita { get; set; }
 
         [NotMapped]
         public TimeSpan tempoEsperado
@@ -45,6 +45,6 @@ namespace Il_Dolce_Chefferini.Models
             set => tempoEsperadoEmTicks = value.Ticks;
         }
 
-        public ICollection<IngredientePasso> ingredientes { get; set; }
+        public virtual ICollection<IngredientePasso> ingredientes { get; set; }
     }
 }

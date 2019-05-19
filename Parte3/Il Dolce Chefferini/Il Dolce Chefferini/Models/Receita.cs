@@ -42,7 +42,7 @@ namespace Il_Dolce_Chefferini.Models
         public int temperaturaId { get; set; }
         public string imagem { get; set; }
 
-        public Temperatura temperatura { get; set; }
+        public virtual Temperatura temperatura { get; set; }
 
         [NotMapped]
         public TimeSpan tempoEsperado

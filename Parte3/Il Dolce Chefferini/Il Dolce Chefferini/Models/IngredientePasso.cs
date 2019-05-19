@@ -34,8 +34,8 @@ namespace Il_Dolce_Chefferini.Models
         public int quantidade { get; set; }
         public string unidade { get; set; }
 
-        public Ingrediente ingrediente { get; set; }
+        public virtual Ingrediente ingrediente { get; set; }
 
-        public Passo passo { get; set; }
+        public virtual Passo passo { get; set; }
     }
 }
