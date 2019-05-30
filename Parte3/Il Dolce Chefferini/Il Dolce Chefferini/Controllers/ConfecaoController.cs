@@ -29,9 +29,12 @@ namespace Il_Dolce_Chefferini.Controllers
 
         // retorna uma confecao dado um id
         [HttpGet("{id}")]
-        public async Task<ActionResult<Confecao>> GetById(int id)
+        public ActionResult<Confecao> GetById(int id)
         {
-            var c = await _context.confecoes.FindAsync(id);
+            var c = _context.confecoes
+                .Include(conf => conf.receita)
+                .Include(conf => conf.receita.passos)
+                .First(e => e.id == id);
             if (c == null)
                 return NoContent();       
             return c;
@@ -41,15 +44,23 @@ namespace Il_Dolce_Chefferini.Controllers
         [HttpGet("{id}/proximo")]
         public ActionResult<Passo> GetProximoPasso(int id)
         {
-            var confecao = _context.confecoes
+            var c = _context.confecoes
                 .Include(conf => conf.receita)
-                .Include(temp => temp.tempoEmPasso)
-                .First(conf => conf.id == id);
-            if (confecao == null)
+                .Include(conf => conf.receita.passos)
+                .Include(conf => conf.tempoEmPasso)
+                .First(e => e.id == id);
+            
+            if (c == null)
                 return NoContent();
-            var ret = confecao.GetProximoPasso();
+            
+            var ret = c.GetProximoPasso();
+            
+            _context.confecoes.Update(c);
+            _context.SaveChanges();
 
-            return ret;
+            return _context.passos.Where(p => p.Equals(ret))
+                .Include("ingredientes.ingrediente")
+                .First();
         }
 
     }

@@ -13,15 +13,11 @@ namespace Il_Dolce_Chefferini.Models
             numeroSequenciaPasso = 1;
             receitaId = 1;
             tempo = TimeSpan.Zero;
-            passo = new Passo();
-            confecao = new Confecao();
         }
 
         public ConfecaoPasso(Passo p, Confecao c, TimeSpan t)
         {
             tempo = t;
-            passo = p;
-            confecao = c;
             confecaoId = c.id;
             numeroSequenciaPasso = p.numeroSequencia;
             receitaId = p.receitaId;
