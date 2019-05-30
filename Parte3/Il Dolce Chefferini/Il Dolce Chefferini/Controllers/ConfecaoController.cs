@@ -18,8 +18,9 @@ namespace Il_Dolce_Chefferini.Controllers
         }
 
         // inicia uma nova confeção
-        [HttpPost]
-        public async Task<IActionResult> IniciaConfecao([FromBody]int receitaId)
+        // [HttpPost]
+        [HttpGet("{id}")]
+        public async Task<IActionResult> IniciaConfecao(int receitaId)
         {
             Confecao c = new Confecao(receitaId);
             _context.confecoes.Add(c);
@@ -28,7 +29,7 @@ namespace Il_Dolce_Chefferini.Controllers
         }
 
         // retorna uma confecao dado um id
-        [HttpGet("{id}")]
+        [HttpGet("{id}/get")]
         public ActionResult<Confecao> GetById(int id)
         {
             var c = _context.confecoes

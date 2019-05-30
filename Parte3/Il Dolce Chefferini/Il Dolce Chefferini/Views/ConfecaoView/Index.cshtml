@@ -11,11 +11,10 @@
 
 
 <body>
-    <form>
-        <input type="button" value="Clica aqui Boo"
-               onclick="window.location.href='@Model.GetProximoPasso'" />
-    </form>
 
+    <a asp-controller="ConfecaoView" asp-action="Next" asp-route-receitaId="@Model.id">
+        <button type="button" class="btn btn-primary">Confecionar Receita</button>
+    </a>
 
 </body>
 </html>
