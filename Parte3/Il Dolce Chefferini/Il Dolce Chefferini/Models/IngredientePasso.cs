@@ -2,6 +2,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Il_Dolce_Chefferini.Models
 {
+    [Table("IngredientePasso")]
     public class IngredientePasso
     {
         public IngredientePasso()

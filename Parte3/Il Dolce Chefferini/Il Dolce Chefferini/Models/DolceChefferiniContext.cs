@@ -59,9 +59,10 @@ namespace Il_Dolce_Chefferini.Models
                     .IsRequired()
                     .HasColumnName("tempoEmTicks");
 
-                //entity.HasOne(e => e.passo);
+                entity.HasOne(e => e.passo);
 
-                //entity.HasOne(e => e.confecao);
+                entity.HasOne(e => e.confecao)
+                    .WithMany(e => e.tempoEmPasso);
                 
             });
 
@@ -78,6 +79,9 @@ namespace Il_Dolce_Chefferini.Models
                     .IsRequired()
                     .HasColumnName("almoco");
 
+                entity.HasOne(e => e.utilizador)
+                    .WithOne(e => e.ementa);
+            
             });
 
             modelBuilder.Entity<IngredientePasso>(entity =>
@@ -95,6 +99,7 @@ namespace Il_Dolce_Chefferini.Models
 
                 entity.HasOne(p => p.passo).WithMany(e => e.ingredientes);
                 entity.HasOne(p => p.ingrediente);
+                
 
             });
 
@@ -125,7 +130,8 @@ namespace Il_Dolce_Chefferini.Models
                     .HasColumnName("urlVideo")
                     .HasMaxLength(512);
 
-                entity.HasMany(e => e.ingredientes);
+                entity.HasMany(e => e.ingredientes)
+                    .WithOne(e => e.passo);
             });
 
             modelBuilder.Entity<Receita>(entity =>

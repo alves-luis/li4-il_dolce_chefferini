@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Il_Dolce_Chefferini.Models
 {
+    [Table("Avaliacao")]
     public class Avaliacao
     {
         public Avaliacao()
