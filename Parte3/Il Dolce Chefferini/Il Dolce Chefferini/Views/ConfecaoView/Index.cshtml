@@ -8,10 +8,14 @@
     <meta name="viewport" content="width=device-width" />
     <title>Passo</title>
 </head>
-<body>
 
-    <!--<img src="Model.u" class="img-responsive" height="144px" width="256px" />-->
-    @Model.passoAtual;
+
+<body>
+    <form>
+        <input type="button" value="Clica aqui Boo"
+               onclick="window.location.href='@Model.GetProximoPasso'" />
+    </form>
+
 
 </body>
 </html>

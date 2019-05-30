@@ -12,11 +12,6 @@ namespace Il_Dolce_Chefferini.Controllers
     {
         public async Task<ActionResult> Index(int id)
         {
-            return View();
-        }
-
-        public async Task<ActionResult> Next(int id)
-        {
             var client = new HttpClient();
             var response = await client.GetAsync("http://localhost:5000/api/Confecao/" + id + "/proximo");
             var passo = await response.Content.ReadAsAsync<Passo>();
