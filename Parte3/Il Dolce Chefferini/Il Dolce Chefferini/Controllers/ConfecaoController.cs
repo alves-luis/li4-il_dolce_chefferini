@@ -36,19 +36,20 @@ namespace Il_Dolce_Chefferini.Controllers
             return c;
         }
 
-        // retorna uma confecao dado um id
+        // retorna o próximo passo dado um id
         [HttpGet("{id}/proximo")]
-        public ActionResult<ConfecaoPasso> GetProximoPasso(int id)
+        public ActionResult<Passo> GetProximoPasso(int id)
         {
             var confecao = _context.confecoes
                 .Include(conf => conf.receita)
+                .Include(temp => temp.tempoEmPasso)
                 .Where(conf => conf.id == id)
                 .First();
-            confecao.GetProximoPasso();
-            var c = _context.confecoesPassos.(id);
-            if (c == null)
+            if (confecao == null)
                 return NoContent();
-            return c;
+            var ret = confecao.GetProximoPasso();
+
+            return ret;
         }
 
     }

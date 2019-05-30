@@ -132,6 +132,9 @@ namespace Il_Dolce_Chefferini.Models
 
                 entity.HasMany(e => e.ingredientes)
                     .WithOne(e => e.passo);
+
+                entity.HasOne(e => e.receita)
+                    .WithMany(e => e.passos);
             });
 
             modelBuilder.Entity<Receita>(entity =>
@@ -186,8 +189,8 @@ namespace Il_Dolce_Chefferini.Models
                     .HasColumnName("criador")
                     .HasMaxLength(64);
 
-               entity.HasMany(e => e.passos)
-                   .WithOne(p => p.receita);
+                entity.HasMany(e => e.passos)
+                    .WithOne(p => p.receita);
 
             });
             
