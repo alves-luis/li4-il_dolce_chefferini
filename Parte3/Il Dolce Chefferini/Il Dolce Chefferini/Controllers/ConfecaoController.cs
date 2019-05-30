@@ -2,7 +2,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Il_Dolce_Chefferini.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Internal;
+using Microsoft.EntityFrameworkCore;
 
 namespace Il_Dolce_Chefferini.Controllers
 {
@@ -36,5 +36,21 @@ namespace Il_Dolce_Chefferini.Controllers
                 return NoContent();       
             return c;
         }
+
+        // retorna o próximo passo dado um id
+        [HttpGet("{id}/proximo")]
+        public ActionResult<Passo> GetProximoPasso(int id)
+        {
+            var confecao = _context.confecoes
+                .Include(conf => conf.receita)
+                .Include(temp => temp.tempoEmPasso)
+                .First(conf => conf.id == id);
+            if (confecao == null)
+                return NoContent();
+            var ret = confecao.GetProximoPasso();
+
+            return ret;
+        }
+
     }
 }

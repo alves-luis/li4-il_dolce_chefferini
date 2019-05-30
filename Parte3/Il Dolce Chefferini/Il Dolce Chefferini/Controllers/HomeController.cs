@@ -11,14 +11,12 @@ namespace Il_Dolce_Chefferini.Controllers
 
         public ActionResult Index()
         {
-            Passo p = new Passo();
-            ViewBag.Message = p;
             return View();
         }
 
-        public ActionResult Fod()
+        public ActionResult Confecao()
         {
-            return RedirectToAction("Index", "ConfecaoV");
+            return RedirectToAction("Index", "ConfecaoView");
         }
 
         public ActionResult Receita()

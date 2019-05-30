@@ -19,6 +19,10 @@
 
     <ItemGroup>
       <Compile Remove="Models\ConfecaoContext.cs" />
+      <Compile Remove="Controllers\EmptyClass.cs" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Content Remove="Views\ReceitasView\Ingredientes.cshtml" />
+    </ItemGroup>
 </Project>
