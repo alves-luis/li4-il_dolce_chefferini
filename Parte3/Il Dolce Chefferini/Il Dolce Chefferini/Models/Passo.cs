@@ -10,7 +10,9 @@ namespace Il_Dolce_Chefferini.Models
         {
             receitaId = 1;
             numeroSequencia = 1;
-            ingredientes = new List<IngredientePasso>();
+            aspetoEsperado = "pictures/passo1.jpg";
+            urlVideo = "https://www.youtube.com/watch?v=tx72s86URhA";
+
         }
 
         public Passo(Receita r, TimeSpan tempo, int nr, string desc, string localFicheiro, string video)
@@ -20,7 +22,6 @@ namespace Il_Dolce_Chefferini.Models
             descricao = desc;
             tempoEsperado = tempo;
             aspetoEsperado = localFicheiro;
-            receita = r;
             urlVideo = video;
         }
 
