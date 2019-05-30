@@ -14,14 +14,20 @@ namespace Il_Dolce_Chefferini.Models
             id = 1;
             usouAjuda = false;
             bemSucedida = false;
-            utilizador = new Utilizador();
             avaliacao = null;
             passoAtual = 1;
             inicioPassoAtual = DateTime.Now;
-            receita = new Receita();
-            tempoEmPasso = new List<ConfecaoPasso>();
-            utilizadorId = utilizador.id;
-            receitaId = receita.id;
+        }
+
+        public Confecao(int receitaId)
+        {
+            this.receitaId = receitaId;
+            utilizadorId = 1;
+            usouAjuda = false;
+            bemSucedida = false;
+            avaliacao = null;
+            passoAtual = 1;
+            inicioPassoAtual = DateTime.Now;
         }
 
         [Key] public int id { get; set; }

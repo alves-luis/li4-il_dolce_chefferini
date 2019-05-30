@@ -119,7 +119,7 @@ namespace Il_Dolce_Chefferini.shared
                 p6.ingredientes.Add(i6_1);
                 IngredientePasso i6_2 = new IngredientePasso(brandy, p6, 90 , "ml");
                 p6.ingredientes.Add(i6_2);
-                IngredientePasso i6_3 = new IngredientePasso(cafe, p6, 0,5 , "l");
+                IngredientePasso i6_3 = new IngredientePasso(cafe, p6, 5 , "dl");
                 p6.ingredientes.Add(i6_3);
                 
                 context.passos.Add(p6);
@@ -212,7 +212,7 @@ namespace Il_Dolce_Chefferini.shared
                 p15.receitaId = 1;
                 p15.descricao = "Leve ao frigorífico durante 4 horas até ficar bem fresquinho.Depois de frio está pronto a servir";
                 p15.tempoEsperado = TimeSpan.FromSeconds(30);
-                p15.numeroSequencia = 14;
+                p15.numeroSequencia = 15;
                 p15.receita = r;
                 
                 context.passos.Add(p15);
