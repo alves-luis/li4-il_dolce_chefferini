@@ -10,7 +10,7 @@ namespace Il_Dolce_Chefferini.Controllers
 {
     public class ConfecaoViewController : Controller 
     {
-        public async Task<ActionResult> Index(int id)
+        public ActionResult Index(int receitaId)
         {
             return View();
         }
