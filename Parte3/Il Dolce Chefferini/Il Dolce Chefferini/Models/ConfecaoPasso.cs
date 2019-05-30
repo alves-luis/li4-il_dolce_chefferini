@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 
 namespace Il_Dolce_Chefferini.Models
 {
+    [Table("ConfecaoPasso")]
     public class ConfecaoPasso
     {
         public ConfecaoPasso()

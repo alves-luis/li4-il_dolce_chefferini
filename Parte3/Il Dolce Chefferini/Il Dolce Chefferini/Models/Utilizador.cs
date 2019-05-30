@@ -6,6 +6,7 @@ using System.Linq;
 
 namespace Il_Dolce_Chefferini.Models
 {
+    [Table("Utilizador")]
     public class Utilizador
     {
         public Utilizador()
@@ -23,9 +24,9 @@ namespace Il_Dolce_Chefferini.Models
         public string password { get; set; }
 
         // for mapping to db
-        public ICollection<Confecao> confecoes { get; set; }
+        public virtual ICollection<Confecao> confecoes { get; set; }
         
-        public Ementa ementa { get; set; }
+        public virtual Ementa ementa { get; set; }
 
         // retorna o número de tentativas falhadas de uma receita
         public int GetTentativasFalhadasDeReceita(int idReceita)

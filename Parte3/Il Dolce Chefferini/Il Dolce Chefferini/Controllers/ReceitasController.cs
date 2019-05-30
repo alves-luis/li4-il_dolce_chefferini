@@ -30,9 +30,11 @@ namespace Il_Dolce_Chefferini.Controllers
 
         // GET: api/Receita/id
         [HttpGet("{id}")]
-        public async Task<ActionResult<Receita>> GetReceita(int id)
+        public ActionResult<Receita> GetReceita(int id)
         {
-            var receita = await _context.receitas.FindAsync(id);
+            var receita = _context.receitas
+                
+                .First(r => r.id == id);
 
             if (receita == null)
                 return NotFound();
@@ -43,25 +45,25 @@ namespace Il_Dolce_Chefferini.Controllers
         [HttpGet("{id}/passos")]
         public ActionResult<IEnumerable<Passo>> GetPassos(int id)
         {
-            List<Passo> result = new List<Passo>();
-            var passos = _context.passos.Where(p => p.receitaId == id);
-            foreach (var p in passos)
-            {
-                result.Append(p);
-            }
-            return result;
+            var passos = _context.passos
+                .Where(p => p.receitaId == id).ToList();
+            return passos;
         }
         
         [HttpGet("{id}/ingredientes")]
         public ActionResult<IEnumerable<IngredientePasso>> GetIngredientes(int id)
         {
-            List<IngredientePasso> result = new List<IngredientePasso>();
-            var ingredientes = _context.ingredientesPassos.Where(p => p.receitaId == id);
-            foreach (var p in ingredientes)
-            {
-                result.Append(p);
-            }
-            return result;
+            var ingredientes = _context.ingredientesPassos
+                .Include(p => p.ingrediente)
+                .Where(p => p.receitaId == id).ToList();
+            return ingredientes;
+        }
+        
+        [HttpGet("ingredientes")]
+        public ActionResult<IEnumerable<Ingrediente>> GetIngredientes()
+        {
+            var ingredientes = _context.ingredientes.ToList();
+            return ingredientes;
         }
 
         // POST: api/Receita

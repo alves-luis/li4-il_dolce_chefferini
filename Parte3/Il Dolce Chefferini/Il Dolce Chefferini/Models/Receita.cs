@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.ComponentModel.DataAnnotations;
 
 namespace Il_Dolce_Chefferini.Models
 {
+    [Table("Receita")]
     public class Receita
     {
         public Receita()
@@ -27,6 +29,7 @@ namespace Il_Dolce_Chefferini.Models
             imagem = "pictures/tiramissu.jpg";
         }
 
+        [Key]
         public int id { get; set; }
         public string nome { get; set; }
         public string descricao { get; set; }

@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Il_Dolce_Chefferini.Models
 {
+    [Table("Confecao")]
     public class Confecao
     {
 
@@ -42,7 +43,7 @@ namespace Il_Dolce_Chefferini.Models
 
         public virtual Receita receita { get; set; }
 
-        public ICollection<ConfecaoPasso> tempoEmPasso { get; set; }
+        public virtual ICollection<ConfecaoPasso> tempoEmPasso { get; set; }
 
         // retorna o passo seguinte da confecao
         public Passo GetProximoPasso()
