@@ -52,6 +52,7 @@ namespace Il_Dolce_Chefferini.Controllers
             return passos;
         }
         
+        // retorna uma lista com os ingredientes de cada receita
         [HttpGet("{id}/ingredientes")]
         public ActionResult<IEnumerable<IngredientePasso>> GetIngredientes(int id)
         {

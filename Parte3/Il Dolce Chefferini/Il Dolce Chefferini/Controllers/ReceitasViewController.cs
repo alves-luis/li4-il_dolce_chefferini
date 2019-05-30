@@ -35,5 +35,13 @@ namespace Il_Dolce_Chefferini.Controllers
 
             return View(ingredientes);
         }
+
+        public async Task<ActionResult> InformacaoNutricional(int id)
+        {
+            var client = new HttpClient();
+            var response = await client.GetAsync("http://localhost:5000/api/Receitas/" + id);
+            var receita = await response.Content.ReadAsAsync<Receita>();
+            return View("Nutricao",receita);
+        }
     }
 }

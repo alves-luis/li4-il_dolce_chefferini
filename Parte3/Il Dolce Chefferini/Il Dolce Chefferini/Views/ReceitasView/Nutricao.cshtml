@@ -1,0 +1,55 @@
+@model Il_Dolce_Chefferini.Models.Receita
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Informação Nutricional</title>
+</head>
+<body>
+<h1>Informação Nutricional</h1>
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Categoria</th>
+            <th>Valor</th>
+        </tr>
+        </thead>
+        <tr>
+            <td>
+                Calorias
+            </td>
+            <td>
+                @Model.calorias kcal
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Hidratos de carbono
+            </td>
+            <td>
+                @Model.hidratos g
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Proteínas
+            </td>
+            <td>
+                @Model.proteinas g
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Lípidos
+            </td>
+            <td>
+                @Model.lipidos g
+            </td>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>

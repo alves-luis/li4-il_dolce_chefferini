@@ -5,19 +5,33 @@
     <title>Index</title>
 </head>
 <body>
-
-<div class="row">
-    <a asp-controller="Home" asp-action="Receita">
-        <button type="button" class="btn btn-success">Receitas</button>
-    </a>
+<div class="container">
+        <div class="row justify-content-center">
+            <div class="my-2">
+                <a asp-controller="Home" asp-action="Receita">
+                    <button type="button" class="btn btn-primary">Receitas</button>
+                </a>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="my-2">
+                <a>
+                    <button type="button" class="btn btn-secondary">Ementa</button>
+                </a>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="my-2">
+                <a>
+                    <button type="button" class="btn btn-secondary">Configuração Inicial</button>
+                </a>
+            </div>
+        </div>
 </div>
-<form>
-        <button asp-controller="Home" asp-action="Receita">Receitas</button>
-    </form>
 
-    <form>
-        <button asp-controller="Home" asp-action="Confecao">Passo</button>
-    </form>
+<form>
+    <button asp-controller="Home" asp-action="Confecao">Passo</button>
+</form>
 
 </body>
 </html>

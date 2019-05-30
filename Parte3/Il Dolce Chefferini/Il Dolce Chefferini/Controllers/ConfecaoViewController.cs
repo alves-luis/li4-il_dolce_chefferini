@@ -10,7 +10,7 @@ namespace Il_Dolce_Chefferini.Controllers
 {
     public class ConfecaoViewController : Controller 
     {
-        public async Task<ActionResult> Index(int id)
+        public ActionResult Index(int receitaId)
         {
             var client = new HttpClient();
             var response = await client.GetAsync("http://localhost:5000/api/Confecao/" + id + "/proximo");
