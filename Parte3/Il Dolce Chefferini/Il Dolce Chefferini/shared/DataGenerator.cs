@@ -74,7 +74,7 @@ namespace Il_Dolce_Chefferini.shared
                 p2.receita = r;
 
                 IngredientePasso i2 = new IngredientePasso(acucar, p2, 180, "gramas");
-                p2.ingredientes.Add(i2);
+               // p2.ingredientes.Add(i2);
                 
                 context.passos.Add(p2);
                 context.ingredientesPassos.Add(i2);
@@ -87,7 +87,7 @@ namespace Il_Dolce_Chefferini.shared
                 p3.receita = r;
                 
                 IngredientePasso i3 = new IngredientePasso(mascarpone, p3, 600, "gramas");
-                p3.ingredientes.Add(i3);
+              //  p3.ingredientes.Add(i3);
                 
                 context.passos.Add(p3);
                 context.ingredientesPassos.Add(i3);
@@ -119,11 +119,11 @@ namespace Il_Dolce_Chefferini.shared
                 p6.receita = r;
                 
                 IngredientePasso i6_1 = new IngredientePasso(acucar, p6, 2, "colheres de sopa");
-                p6.ingredientes.Add(i6_1);
+               // p6.ingredientes.Add(i6_1);
                 IngredientePasso i6_2 = new IngredientePasso(brandy, p6, 90 , "ml");
-                p6.ingredientes.Add(i6_2);
-                IngredientePasso i6_3 = new IngredientePasso(cafe, p6, 0,5 , "l");
-                p6.ingredientes.Add(i6_3);
+              //  p6.ingredientes.Add(i6_2);
+                IngredientePasso i6_3 = new IngredientePasso(cafe, p6, 5 , "l");
+             //   p6.ingredientes.Add(i6_3);
                 
                 context.passos.Add(p6);
                 context.ingredientesPassos.Add(i6_1);
@@ -148,7 +148,7 @@ namespace Il_Dolce_Chefferini.shared
                 p8.receita = r;
                 
                 IngredientePasso i8 = new IngredientePasso(champanhe, p8, 350, "gramas");
-                p8.ingredientes.Add(i8);
+              //  p8.ingredientes.Add(i8);
                 
                 context.passos.Add(p8);
                 context.ingredientesPassos.Add(i8);
@@ -179,7 +179,7 @@ namespace Il_Dolce_Chefferini.shared
                 p11.receita = r;
                 
                 IngredientePasso i11 = new IngredientePasso(cacau, p11, 1, "qb");
-                p11.ingredientes.Add(i11);
+              //  p11.ingredientes.Add(i11);
                 
                 context.passos.Add(p11);
                 context.ingredientesPassos.Add(i11);
@@ -215,7 +215,7 @@ namespace Il_Dolce_Chefferini.shared
                 p15.receitaId = 1;
                 p15.descricao = "Leve ao frigorífico durante 4 horas até ficar bem fresquinho.Depois de frio está pronto a servir";
                 p15.tempoEsperado = TimeSpan.FromSeconds(30);
-                p15.numeroSequencia = 14;
+                p15.numeroSequencia = 15;
                 p15.receita = r;
                 
                 context.passos.Add(p15);
