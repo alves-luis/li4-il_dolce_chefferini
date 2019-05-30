@@ -19,11 +19,12 @@ namespace Il_Dolce_Chefferini.Controllers
 
         // inicia uma nova confeção
         [HttpPost]
-        public async Task<IActionResult> IniciaConfecao([FromBody] Confecao c)
+        public async Task<IActionResult> IniciaConfecao([FromBody]int receitaId)
         {
+            Confecao c = new Confecao(receitaId);
             _context.confecoes.Add(c);
             await _context.SaveChangesAsync();
-            return CreatedAtAction(nameof(GetById), new {c.id}, c);
+            return CreatedAtAction(nameof(GetById), new {receitaId}, c);
         }
 
         // retorna uma confecao dado um id
@@ -43,8 +44,7 @@ namespace Il_Dolce_Chefferini.Controllers
             var confecao = _context.confecoes
                 .Include(conf => conf.receita)
                 .Include(temp => temp.tempoEmPasso)
-                .Where(conf => conf.id == id)
-                .First();
+                .First(conf => conf.id == id);
             if (confecao == null)
                 return NoContent();
             var ret = confecao.GetProximoPasso();

@@ -88,7 +88,7 @@ namespace Il_Dolce_Chefferini.shared
                 
                 IngredientePasso i3 = new IngredientePasso(mascarpone, p3, 600, "gramas");
               //  p3.ingredientes.Add(i3);
-                
+
                 context.passos.Add(p3);
                 context.ingredientesPassos.Add(i3);
                 
@@ -124,6 +124,7 @@ namespace Il_Dolce_Chefferini.shared
               //  p6.ingredientes.Add(i6_2);
                 IngredientePasso i6_3 = new IngredientePasso(cafe, p6, 5 , "l");
              //   p6.ingredientes.Add(i6_3);
+
                 
                 context.passos.Add(p6);
                 context.ingredientesPassos.Add(i6_1);
@@ -149,6 +150,7 @@ namespace Il_Dolce_Chefferini.shared
                 
                 IngredientePasso i8 = new IngredientePasso(champanhe, p8, 350, "gramas");
               //  p8.ingredientes.Add(i8);
+
                 
                 context.passos.Add(p8);
                 context.ingredientesPassos.Add(i8);
