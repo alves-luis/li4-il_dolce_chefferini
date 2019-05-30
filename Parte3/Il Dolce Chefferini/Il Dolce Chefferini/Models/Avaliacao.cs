@@ -36,6 +36,6 @@ namespace Il_Dolce_Chefferini.Models
 
         [Required] public DateTime data { get; set; }
 
-        [NotMapped] public Confecao confecao { get; set; }
+        public virtual Confecao confecao { get; set; }
     }
 }

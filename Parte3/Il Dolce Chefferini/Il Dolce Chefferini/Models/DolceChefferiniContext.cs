@@ -41,10 +41,10 @@ namespace Il_Dolce_Chefferini.Models
                     .HasColumnName("password");
 
                 entity.HasMany(e => e.confecoes)
-                    .WithOne();
+                    .WithOne(e => e.utilizador);
 
                 entity.HasOne(e => e.ementa)
-                    .WithOne();
+                    .WithOne(e => e.utilizador);
             });
 
             modelBuilder.Entity<ConfecaoPasso>(entity =>
@@ -200,6 +200,9 @@ namespace Il_Dolce_Chefferini.Models
                 entity.Property(e => e.bemSucedida)
                     .IsRequired()
                     .HasColumnName("bemSucedida");
+
+                entity.HasOne(e => e.utilizador)
+                    .WithMany(e => e.confecoes);
             });
             
             modelBuilder.Entity<Avaliacao>(entity =>

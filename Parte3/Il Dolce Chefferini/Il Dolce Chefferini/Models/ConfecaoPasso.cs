@@ -41,8 +41,8 @@ namespace Il_Dolce_Chefferini.Models
             set => tempoEmTicks = value.Ticks;
         }
 
-        [NotMapped] [JsonIgnore] public Passo passo { get; set; }
+        public virtual Passo passo { get; set; }
 
-        [NotMapped] [JsonIgnore] public Confecao confecao { get; set; }
+        public virtual Confecao confecao { get; set; }
     }
 }

@@ -23,7 +23,7 @@ namespace Il_Dolce_Chefferini.Controllers
 
         public ActionResult Receita()
         {
-            return RedirectToAction("Index", "Receita");
+            return RedirectToAction("Index", "ReceitasView");
         }
     }
 }

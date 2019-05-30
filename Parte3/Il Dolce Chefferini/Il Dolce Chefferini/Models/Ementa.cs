@@ -21,8 +21,8 @@ namespace Il_Dolce_Chefferini.Models
         public string diaDaSemana { get; set; }
         public bool almoco { get; set; }
 
-        [NotMapped] public Utilizador utilizador { get; set; }
+        public virtual Utilizador utilizador { get; set; }
 
-        [NotMapped] public Receita receita { get; set; }
+        public virtual Receita receita { get; set; }
     }
 }

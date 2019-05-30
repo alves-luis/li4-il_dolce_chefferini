@@ -34,13 +34,13 @@ namespace Il_Dolce_Chefferini.Models
 
         public Avaliacao avaliacao { get; set; }
 
-        [NotMapped] public int passoAtual { get; set; }
+        public int passoAtual { get; set; }
 
-        [NotMapped] public DateTime inicioPassoAtual { get; set; }
+        public DateTime inicioPassoAtual { get; set; }
 
-        [NotMapped] public Utilizador utilizador { get; set; }
+        public virtual Utilizador utilizador { get; set; }
 
-        [NotMapped] public Receita receita { get; set; }
+        public virtual Receita receita { get; set; }
 
         public ICollection<ConfecaoPasso> tempoEmPasso { get; set; }
 
