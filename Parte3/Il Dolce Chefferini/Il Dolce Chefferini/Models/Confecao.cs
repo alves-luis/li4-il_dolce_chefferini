@@ -26,7 +26,7 @@ namespace Il_Dolce_Chefferini.Models
             usouAjuda = false;
             bemSucedida = false;
             avaliacao = null;
-            passoAtual = -1;
+            passoAtual = 0;
             inicioPassoAtual = DateTime.Now;
         }
 
@@ -94,6 +94,21 @@ namespace Il_Dolce_Chefferini.Models
             foreach (var p in tempoEmPasso) sum.Add(p.tempo);
 
             return sum;
+        }
+
+        public void IniciaPasso()
+        {
+            inicioPassoAtual = DateTime.Now;
+        }
+
+        public void FinalizaPasso()
+        {
+            if (passoAtual < receita.GetNumeroDePassos())
+            {
+                var passoAntes = receita.GetPasso(passoAtual);
+                tempoEmPasso.Add(new ConfecaoPasso(passoAntes, this, DateTime.Now - inicioPassoAtual));
+                passoAtual++;
+            }
         }
     }
 }

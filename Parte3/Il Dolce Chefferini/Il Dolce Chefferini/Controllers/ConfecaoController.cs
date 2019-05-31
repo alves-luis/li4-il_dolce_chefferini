@@ -68,6 +68,49 @@ namespace Il_Dolce_Chefferini.Controllers
                 .Include("ingredientes.ingrediente")
                 .First();
         }
+        
+        // inicia passo, dado o id de uma confeçao
+        [HttpGet("{confecaoId}/inicia")]
+        public ActionResult<Confecao> IniciaPasso(int confecaoId)
+        {
+            var c = _context.confecoes
+                .Include(conf => conf.receita)
+                .Include(conf => conf.receita.passos)
+                .Include(conf => conf.tempoEmPasso)
+                .First(e => e.id == confecaoId);
+
+            if (c == null)
+                return NoContent();
+
+            c.IniciaPasso();
+            _context.confecoes.Update(c);
+            _context.SaveChanges();
+
+            return c;
+        }
+        
+        // finaliza passo, dado o id de uma confecao
+        [HttpGet("{confecaoId/finaliza")]
+        public ActionResult<Confecao> FinalizaPasso(int confecaoId)
+        {
+            var c = _context.confecoes
+                .Include(conf => conf.receita)
+                .Include(conf => conf.receita.passos)
+                .Include(conf => conf.tempoEmPasso)
+                .First(e => e.id == confecaoId);
+
+            if (c == null)
+                return NoContent();
+
+            c.FinalizaPasso();
+            _context.confecoes.Update(c);
+            ConfecaoPasso cp = c.tempoEmPasso.LastOrDefault();
+            if (cp != null)
+                _context.confecoesPassos.Add(cp);
+            _context.SaveChanges();
+
+            return c;
+        }
 
     }
 }
