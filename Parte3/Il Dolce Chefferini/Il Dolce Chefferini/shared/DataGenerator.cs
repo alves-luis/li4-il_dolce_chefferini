@@ -12,14 +12,14 @@ namespace Il_Dolce_Chefferini.shared
             using (var context = new DolceChefferiniContext(
                 service.GetRequiredService<DbContextOptions<DolceChefferiniContext>>()))
             {
-                Ingrediente champanhe = new Ingrediente(1, "palitos de champanhe", true);
-                Ingrediente mascarpone = new Ingrediente(2, "queijo mascarpone", true);
-                Ingrediente ovo = new Ingrediente(3, "ovos", true);
-                Ingrediente cafe = new Ingrediente(4, "café", true);
-                Ingrediente acucar = new Ingrediente(5, "açúcar", true);
-                Ingrediente brandy = new Ingrediente(6, "brandy", true);
-                Ingrediente cacau = new Ingrediente(7, "cacau", true);
-                Ingrediente taca = new Ingrediente(8, "taça", false);
+                Ingrediente champanhe = new Ingrediente(1, "Palitos de Champanhe", true);
+                Ingrediente mascarpone = new Ingrediente(2, "Queijo Mascarpone", true);
+                Ingrediente ovo = new Ingrediente(3, "Ovos", true);
+                Ingrediente cafe = new Ingrediente(4, "Café", true);
+                Ingrediente acucar = new Ingrediente(5, "Açúcar", true);
+                Ingrediente brandy = new Ingrediente(6, "Brandy", true);
+                Ingrediente cacau = new Ingrediente(7, "Cacau", true);
+                Ingrediente taca = new Ingrediente(8, "Taça", false);
                 context.ingredientes.Add(champanhe);
                 context.ingredientes.Add(mascarpone);
                 context.ingredientes.Add(ovo);
