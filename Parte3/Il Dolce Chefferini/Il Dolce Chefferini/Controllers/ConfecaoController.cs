@@ -28,6 +28,7 @@ namespace Il_Dolce_Chefferini.Controllers
                 .Where(conf => conf.id == c.id)
                 .Include(conf => conf.receita)
                 .Include(conf => conf.receita.passos)
+                .Include("receita.passos.ingredientes.ingrediente")
                 .First();
             return CreatedAtAction(nameof(GetById), new {receitaId}, c);
         }
