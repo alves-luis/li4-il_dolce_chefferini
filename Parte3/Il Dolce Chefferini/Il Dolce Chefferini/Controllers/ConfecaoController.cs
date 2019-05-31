@@ -18,8 +18,7 @@ namespace Il_Dolce_Chefferini.Controllers
         }
 
         // inicia uma nova confeção
-        // [HttpPost]
-        [HttpGet("{id}")]
+        [HttpPost("{receitaId}")]
         public async Task<IActionResult> IniciaConfecao(int receitaId)
         {
             Confecao c = new Confecao(receitaId);
