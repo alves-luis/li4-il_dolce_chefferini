@@ -238,6 +238,11 @@ namespace Il_Dolce_Chefferini.shared
                 r.passos.Add(p14);
                 r.passos.Add(p15);
                 context.receitas.Add(r);
+                
+                
+                Utilizador u1 = new Utilizador();
+                context.utilizadores.Add(u1);
+                
                 context.SaveChanges();
                 
             }
