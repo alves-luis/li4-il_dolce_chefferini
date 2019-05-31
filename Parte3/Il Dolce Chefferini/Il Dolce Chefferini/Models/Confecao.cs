@@ -26,7 +26,7 @@ namespace Il_Dolce_Chefferini.Models
             usouAjuda = false;
             bemSucedida = false;
             avaliacao = null;
-            passoAtual = -1;
+            passoAtual = 0;
             inicioPassoAtual = DateTime.Now;
         }
 

@@ -13,17 +13,27 @@ namespace Il_Dolce_Chefferini.Controllers
         public async Task<ActionResult> Index(int receitaId)
         {
             var client = new HttpClient();
-            var response = await client.PostAsync(new Uri("http://localhost:5000/api/Confecao/" + receitaId + ""),null);
+            var response = await client.PostAsync(new Uri("http://localhost:5000/api/Confecao/" + receitaId),null);
             var confecao = await response.Content.ReadAsAsync<Confecao>();
             return View(confecao);
         }
 
-        public async Task<ActionResult> Next(int receitaId)
+
+        public async Task<ActionResult> Get(int confecaoId)
         {
             var client = new HttpClient();
-            var response = await client.GetAsync("http://localhost:5000/api/Confecao/" + receitaId + "/proximo");
+            var response = await client.GetAsync("http://localhost:5000/api/Confecao/" + confecaoId + "/get");
             var passo = await response.Content.ReadAsAsync<Passo>();
-            return View("Passo1",passo);
+            return View("Passo", passo);
+        }
+
+
+        public async Task<ActionResult> Next(int confecaoId)
+        {
+            var client = new HttpClient();
+            var response = await client.GetAsync("http://localhost:5000/api/Confecao/" + confecaoId + "/proximo");
+            var passo = await response.Content.ReadAsAsync<Passo>();
+            return View("PrePasso",passo);
         }
     }
 }

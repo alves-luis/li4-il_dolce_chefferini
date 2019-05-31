@@ -1,5 +1,8 @@
 ﻿@model Il_Dolce_Chefferini.Models.Confecao
 
+@{
+    var passo = @Model.receita.passos.ElementAt(@Model.passoAtual);
+}
 
 <!DOCTYPE html>
 
@@ -11,10 +14,41 @@
 
 
 <body>
+    <div class="justify-content-center row my-2">
 
-    <a asp-controller="ConfecaoView" asp-action="Next" asp-route-receitaId="@Model.id">
-        <button type="button" class="btn btn-primary">Confecionar Receita</button>
-    </a>
+        <h1 align="center">Passo @Model.passoAtual</h1>
+    </div>
+
+    <div class="justify-content-center row my-2">
+        <p style="text-align:center;"><img src="@passo.aspetoEsperado" height="216px" width="384px" /></p>
+
+    </div>
+
+    <div class="justify-content-center row my-2">
+        <div class="card text-center" style="width: 18rem;">
+            <div class="card-body">
+                <p class="card-text"> @passo.descricao</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-right">
+        <a asp-controller="ConfecaoView" asp-action="Get" asp-route-receitaId="@Model.id">
+            <button type="button" class="btn btn-primary">Iniciar Passo</button>
+        </a>
+    </div>
+
+    <div class="text-left">
+        <a asp-controller="ConfecaoView" asp-action="Help" asp-route-receitaId="@Model.id">
+            <button type="button" class="btn btn-primary">Ajuda</button>
+        </a>
+    </div>
+
+
+   
 
 </body>
+
+
 </html>
+

@@ -57,7 +57,7 @@ namespace Il_Dolce_Chefferini.shared
                 p1.numeroSequencia = 1;
                 p1.receita = r;
                 p1.aspetoEsperado = "pictures/passo1.jpg";
-                p1.urlVideo = "https://www.youtube.com/watch?v=tx72s86URhA";
+                p1.urlVideo = "https://www.youtube.com/embed/tx72s86URhA";
 
 
                 IngredientePasso i1 = new IngredientePasso(ovo, p1, 6, "unitário");

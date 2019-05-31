@@ -1,0 +1,29 @@
+﻿
+@model Il_Dolce_Chefferini.Models.Confecao
+
+
+@{
+    var passo = @Model.receita.passos.ElementAt(@Model.passoAtual);
+
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Passo</title>
+</head>
+
+
+<body>
+    <div class="justify-content-center row my-2">
+        <iframe width="560" height="315" src='@passo.urlVideo' frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+</body>
+</html>
+
+
+
+

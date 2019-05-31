@@ -29,7 +29,7 @@ namespace Il_Dolce_Chefferini.Controllers
                 .Include(conf => conf.receita)
                 .Include(conf => conf.receita.passos)
                 .First();
-            return CreatedAtAction(nameof(GetById), new {receitaId}, c);
+            return CreatedAtAction(nameof(GetById), new {c.id}, c);
         }
 
         // retorna uma confecao dado um id
