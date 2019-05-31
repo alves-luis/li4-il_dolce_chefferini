@@ -24,6 +24,11 @@ namespace Il_Dolce_Chefferini.Controllers
             Confecao c = new Confecao(receitaId);
             _context.confecoes.Add(c);
             await _context.SaveChangesAsync();
+            c = _context.confecoes
+                .Where(conf => conf.id == c.id)
+                .Include(conf => conf.receita)
+                .Include(conf => conf.receita.passos)
+                .First();
             return CreatedAtAction(nameof(GetById), new {receitaId}, c);
         }
 
