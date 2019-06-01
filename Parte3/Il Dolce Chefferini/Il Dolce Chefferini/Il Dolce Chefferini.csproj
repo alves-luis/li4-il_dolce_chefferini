@@ -24,5 +24,10 @@
 
     <ItemGroup>
       <Content Remove="Views\ReceitasView\Ingredientes.cshtml" />
+      <Content Remove="Views\ConfecaoView\Passo1.cshtml" />
+      <Content Remove="wwwroot\pictures\passo8.jpg" />
+    </ItemGroup>
+    <ItemGroup>
+      <Folder Include="Views\AvaliacaoView\" />
     </ItemGroup>
 </Project>

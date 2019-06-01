@@ -15,16 +15,7 @@ namespace Il_Dolce_Chefferini.Controllers
             var client = new HttpClient();
             var response = await client.PostAsync(new Uri("http://localhost:5000/api/Confecao/" + receitaId),null);
             var confecao = await response.Content.ReadAsAsync<Confecao>();
-            return View(confecao);
-        }
-
-
-        public async Task<ActionResult> Get(int confecaoId)
-        {
-            var client = new HttpClient();
-            var response = await client.GetAsync("http://localhost:5000/api/Confecao/" + confecaoId + "/get");
-            var confecao = await response.Content.ReadAsAsync<Confecao>();
-            return View("Passo", confecao);
+            return View("PrePasso",confecao);
         }
 
 
@@ -37,12 +28,20 @@ namespace Il_Dolce_Chefferini.Controllers
        }
 
 
-        public async Task<ActionResult> Next(int confecaoId)
+        public async Task<ActionResult> Inicia(int confecaoId)
         {
             var client = new HttpClient();
-            var response = await client.GetAsync("http://localhost:5000/api/Confecao/" + confecaoId + "/proximo");
-            var passo = await response.Content.ReadAsAsync<Passo>();
-            return View("PrePasso",passo);
+            var response = await client.GetAsync("http://localhost:5000/api/Confecao/" + confecaoId + "/inicia");
+            var confecao = await response.Content.ReadAsAsync<Confecao>();
+            return View("Passo",confecao);
+        }
+
+        public async Task<ActionResult> Termina(int confecaoId)
+        {
+            var client = new HttpClient();
+            var response = await client.GetAsync("http://localhost:5000/api/Confecao/" + confecaoId + "/finaliza");
+            var confecao = await response.Content.ReadAsAsync<Confecao>();
+            return View("PrePasso", confecao);
         }
     }
 }

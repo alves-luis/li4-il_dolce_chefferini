@@ -68,10 +68,12 @@ namespace Il_Dolce_Chefferini.shared
                 
                 Passo p2 = new Passo();
                 p2.receitaId = 1;
-                p2.descricao = "Junte os 180g de açúcar às gemas e bata até ficar uma gemada esbranquiçada";
+                p2.descricao = "Numa taça, junte os 180g de açúcar às gemas e bata até ficar uma gemada esbranquiçada";
                 p2.tempoEsperado = TimeSpan.FromSeconds(180);
                 p2.numeroSequencia = 2;
                 p2.receita = r;
+                p2.aspetoEsperado = "pictures/passo2.jpg";
+                p2.urlVideo = null;
 
                 IngredientePasso i2 = new IngredientePasso(acucar, p2, 180, "gramas");
                // p2.ingredientes.Add(i2);
@@ -85,7 +87,9 @@ namespace Il_Dolce_Chefferini.shared
                 p3.tempoEsperado = TimeSpan.FromSeconds(180);
                 p3.numeroSequencia = 3;
                 p3.receita = r;
-                
+                p3.aspetoEsperado = "pictures/passo3.jpg";
+                p3.urlVideo = null;
+
                 IngredientePasso i3 = new IngredientePasso(mascarpone, p3, 600, "gramas");
               //  p3.ingredientes.Add(i3);
 
@@ -98,31 +102,37 @@ namespace Il_Dolce_Chefferini.shared
                 p4.tempoEsperado = TimeSpan.FromSeconds(180);
                 p4.numeroSequencia = 4;
                 p4.receita = r;
-                
+                p4.aspetoEsperado = "pictures/passo4.jpg";
+                p4.urlVideo = "https://www.youtube.com/embed/wDfRr3HwpEA";
+
                 context.passos.Add(p4);
                 
                 
                 Passo p5 = new Passo();
                 p5.receitaId = 1;
-                p5.descricao = "Envolva as claras com o creme de queijo";
+                p5.descricao = "Misture as claras com o creme de queijo, adicionando duas colheres de clara de cada vez";
                 p5.tempoEsperado = TimeSpan.FromSeconds(30);
                 p5.numeroSequencia = 5;
                 p5.receita = r;
-                
+                p5.aspetoEsperado = "pictures/passo5.jpg";
+                p5.urlVideo = null;
+
                 context.passos.Add(p5);
                        
                 Passo p6 = new Passo();
                 p6.receitaId = 1;
-                p6.descricao = "Numa taça, junte as duas colheres de sopa de açúcar, o brandy e o café";
+                p6.descricao = "Numa taça diferente, junte as duas colheres de sopa de açúcar, o brandy, o café";
                 p6.tempoEsperado = TimeSpan.FromSeconds(30);
                 p6.numeroSequencia = 6;
                 p6.receita = r;
-                
+                p6.aspetoEsperado = "pictures/passo6.jpg";
+                p6.urlVideo = null;
+
                 IngredientePasso i6_1 = new IngredientePasso(acucar, p6, 2, "colheres de sopa");
                // p6.ingredientes.Add(i6_1);
                 IngredientePasso i6_2 = new IngredientePasso(brandy, p6, 90 , "ml");
               //  p6.ingredientes.Add(i6_2);
-                IngredientePasso i6_3 = new IngredientePasso(cafe, p6, 5 , "l");
+                IngredientePasso i6_3 = new IngredientePasso(cafe, p6, 500 , "ml");
              //   p6.ingredientes.Add(i6_3);
 
                 
@@ -133,21 +143,25 @@ namespace Il_Dolce_Chefferini.shared
                 
                 Passo p7 = new Passo();
                 p7.receitaId = 1;
-                p7.descricao = "Misture tudo";
+                p7.descricao = "Misture os ingredientes do passo anterior";
                 p7.tempoEsperado = TimeSpan.FromSeconds(30);
                 p7.numeroSequencia = 7;
                 p7.receita = r;
-                
+                p7.aspetoEsperado = "pictures/passo7.jpg";
+                p7.urlVideo = null;
+
                 context.passos.Add(p7);
                 
                 
                 Passo p8 = new Passo();
                 p8.receitaId = 1;
-                p8.descricao = "Passe os palitos de champanhe pelo café";
+                p8.descricao = "Mergulhe cada palito de champanhe no café durante 2 segundos na mistura do passo anterior.";
                 p8.tempoEsperado = TimeSpan.FromSeconds(30);
                 p8.numeroSequencia = 8;
                 p8.receita = r;
-                
+                p8.aspetoEsperado = "pictures/passo8.jpg";
+                p8.urlVideo = null;
+
                 IngredientePasso i8 = new IngredientePasso(champanhe, p8, 350, "gramas");
               //  p8.ingredientes.Add(i8);
 
@@ -161,7 +175,9 @@ namespace Il_Dolce_Chefferini.shared
                 p9.tempoEsperado = TimeSpan.FromSeconds(30);
                 p9.numeroSequencia = 9;
                 p9.receita = r;
-                
+                p9.aspetoEsperado = "pictures/passo9.jpg";
+                p9.urlVideo = null;
+
                 context.passos.Add(p9);
                 
                 Passo p10 = new Passo();
@@ -170,7 +186,9 @@ namespace Il_Dolce_Chefferini.shared
                 p10.tempoEsperado = TimeSpan.FromSeconds(30);
                 p10.numeroSequencia = 10;
                 p10.receita = r;
-                
+                p10.aspetoEsperado = "pictures/passo10.jpg";
+                p10.urlVideo = null;
+
                 context.passos.Add(p10);
                 
                 Passo p11 = new Passo();
@@ -179,7 +197,9 @@ namespace Il_Dolce_Chefferini.shared
                 p11.tempoEsperado = TimeSpan.FromSeconds(30);
                 p11.numeroSequencia = 11;
                 p11.receita = r;
-                
+                p11.aspetoEsperado = "pictures/passo11.jpg";
+                p11.urlVideo = "https://www.youtube.com/embed/tx72s86URhA";
+
                 IngredientePasso i11 = new IngredientePasso(cacau, p11, 1, "qb");
               //  p11.ingredientes.Add(i11);
                 
@@ -192,7 +212,9 @@ namespace Il_Dolce_Chefferini.shared
                 p12.tempoEsperado = TimeSpan.FromSeconds(30);
                 p12.numeroSequencia = 12;
                 p12.receita = r;
-                
+                p12.aspetoEsperado = "pictures/passo12.jpg";
+                p12.urlVideo = null;
+
                 context.passos.Add(p12);
                 
                 Passo p13 = new Passo();
@@ -201,7 +223,9 @@ namespace Il_Dolce_Chefferini.shared
                 p13.tempoEsperado = TimeSpan.FromSeconds(30);
                 p13.numeroSequencia = 13;
                 p13.receita = r;
-                
+                p13.aspetoEsperado = "pictures/passo13.jpg";
+                p13.urlVideo = null;
+
                 context.passos.Add(p13);
                 
                 Passo p14 = new Passo();
@@ -210,7 +234,9 @@ namespace Il_Dolce_Chefferini.shared
                 p14.tempoEsperado = TimeSpan.FromSeconds(30);
                 p14.numeroSequencia = 14;
                 p14.receita = r;
-                
+                p14.aspetoEsperado = "pictures/passo14.jpg";
+                p14.urlVideo = null;
+
                 context.passos.Add(p14);
                 
                 Passo p15 = new Passo();
@@ -219,7 +245,9 @@ namespace Il_Dolce_Chefferini.shared
                 p15.tempoEsperado = TimeSpan.FromSeconds(30);
                 p15.numeroSequencia = 15;
                 p15.receita = r;
-                
+                p15.aspetoEsperado = "pictures/passo15.jpg";
+                p15.urlVideo = null;
+
                 context.passos.Add(p15);
                 
                 r.passos.Add(p1);
