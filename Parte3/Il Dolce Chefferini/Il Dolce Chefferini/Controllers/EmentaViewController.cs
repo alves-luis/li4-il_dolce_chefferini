@@ -1,6 +1,8 @@
+using Microsoft.AspNetCore.Mvc;
+
 namespace Il_Dolce_Chefferini.Controllers
 {
-    public class EmentaViewController
+    public class EmentaViewController : Controller
     {
         
     }

@@ -44,7 +44,7 @@ namespace Il_Dolce_Chefferini.Models
                 entity.HasMany(e => e.confecoes)
                     .WithOne(e => e.utilizador);
 
-                entity.HasOne(e => e.ementa)
+                entity.HasMany(e => e.ementa)
                     .WithOne(e => e.utilizador);
             });
 
@@ -81,7 +81,7 @@ namespace Il_Dolce_Chefferini.Models
                     .HasColumnName("almoco");
 
                 entity.HasOne(e => e.utilizador)
-                    .WithOne(e => e.ementa);
+                    .WithMany(e => e.ementa);
 
                 entity.HasOne(e => e.receita);
 

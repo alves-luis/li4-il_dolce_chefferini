@@ -30,7 +30,7 @@ namespace Il_Dolce_Chefferini.Models
         // for mapping to db
         public virtual ICollection<Confecao> confecoes { get; set; }
         
-        public virtual Ementa ementa { get; set; }
+        public virtual ICollection<Ementa> ementa { get; set; }
 
         // retorna o número de tentativas falhadas de uma receita
         public int GetTentativasFalhadasDeReceita(int idReceita)
