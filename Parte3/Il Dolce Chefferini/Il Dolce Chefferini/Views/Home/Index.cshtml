@@ -6,32 +6,23 @@
 </head>
 <body>
 <div class="container">
-        <div class="row justify-content-center">
-            <div class="my-2">
-                <a asp-controller="Home" asp-action="Receita">
-                    <button type="button" class="btn btn-primary">Receitas</button>
-                </a>
-            </div>
+    <div class="row justify-content-center">
+        <div class="my-2">
+            <img src="pictures/landing_page.jpg" class="img-responsive" alt="Landing page beautiful picture" width="300" height="450"/>
         </div>
-        <div class="row justify-content-center">
-            <div class="my-2">
-                <a>
-                    <button type="button" class="btn btn-secondary">Ementa</button>
-                </a>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="my-2">
-                <a>
-                    <button type="button" class="btn btn-secondary">Configuração Inicial</button>
-                </a>
-            </div>
-        </div>
+    </div>
+    <div class="row justify-content-center">
+        <h2>Bem-vindo!</h2>
+    </div>
+    <div class="row justify-content-center my-2">
+        <a asp-action="Autenticar" asp-controller="Home">
+            <button type="button" class="btn btn-primary">Autenticar</button>
+        </a>
+    </div>
+    <div class="row justify-content-center my-2">
+            <button type="button" class="btn btn-secondary">Registar</button>
+    </div>
 </div>
-
-<form>
-    <button asp-controller="Home" asp-action="Confecao">Passo</button>
-</form>
 
 </body>
 </html>

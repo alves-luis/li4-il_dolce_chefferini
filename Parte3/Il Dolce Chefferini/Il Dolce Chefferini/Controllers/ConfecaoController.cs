@@ -90,7 +90,7 @@ namespace Il_Dolce_Chefferini.Controllers
         }
         
         // finaliza passo, dado o id de uma confecao
-        [HttpGet("{confecaoId/finaliza")]
+        [HttpGet("{confecaoId}/finaliza")]
         public ActionResult<Confecao> FinalizaPasso(int confecaoId)
         {
             var c = _context.confecoes

@@ -13,7 +13,7 @@ namespace Il_Dolce_Chefferini.Controllers
         public async Task<ActionResult> Index(int receitaId)
         {
             var client = new HttpClient();
-            var response = await client.PostAsync(new Uri("http://localhost:5000/api/Confecao/" + receitaId + ""),null);
+            var response = await client.PostAsync(new Uri("http://localhost:5000/api/Confecao/" + receitaId),null);
             var confecao = await response.Content.ReadAsAsync<Confecao>();
             return View(confecao);
         }
