@@ -1,0 +1,72 @@
+﻿@model Il_Dolce_Chefferini.Models.Confecao
+
+@{
+    var passo = @Model.receita.passos.ElementAt(@Model.passoAtual);
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Passo</title>
+</head>
+
+
+<body>
+    <div class="justify-content-center row my-4">
+
+        <h1 align="center">Passo @Model.passoAtual</h1>
+    </div>
+
+    <div class="justify-content-center row my-4">
+        <img class="two" src="/@passo.aspetoEsperado" width="300" height="300">
+    </div>
+
+    <div class="justify-content-center row my-4">
+        <div class="card text-center" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Ingredientes</h5>
+                @foreach (var r in passo.ingredientes)
+                {
+                    <p class="card-text"> @r.quantidade @r.ingrediente.nome (@r.unidade) </p>
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="justify-content-center row my-4">
+        <div class="card text-center" style="width: 18rem;">
+            <div class="card-body">
+                <p class="card-text"> @passo.descricao</p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="justify-content-center row my-4">
+        <a asp-controller="ConfecaoView" asp-action="Termina" asp-route-confecaoId="@Model.id">
+            <button type="button" class="btn btn-primary btn-lg">Terminar Passo</button>
+        </a>
+    </div>
+
+    @if (@passo.urlVideo!=null) {
+
+    <div class="justify-content-center row my-4">
+        <a asp-controller="ConfecaoView" asp-action="Help" asp-route-confecaoId="@Model.id">
+            <button type="button" class="btn btn-primary btn-lg">Ajuda</button>
+        </a>
+    </div>
+    }
+
+
+
+
+</body>
+
+
+</html>
+
+
+
+
