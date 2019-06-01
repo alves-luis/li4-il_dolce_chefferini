@@ -14,41 +14,52 @@
 
 
 <body>
-    <div class="justify-content-center row my-2">
+    <div class="justify-content-center row my-4">
 
         <h1 align="center">Passo @Model.passoAtual</h1>
     </div>
 
-    <div class="justify-content-center row my-2">
+    <div class="justify-content-center row my-4">
         <p style="text-align:center;"><img src="@passo.aspetoEsperado" height="216px" width="384px" /></p>
 
     </div>
 
-    <div class="justify-content-center row my-2">
+    <div class="justify-content-center row my-4">
         <div class="card text-center" style="width: 18rem;">
             <div class="card-body">
-                <p class="card-text"> @passo.descricao</p>
+                <h5 class="card-title">Ingredientes</h5>
+                @foreach (var r in passo.ingredientes) {
+                <p class="card-text"> @r.quantidade @r.ingrediente.nome (@r.unidade) </p>
+                }
             </div>
         </div>
     </div>
 
-    <div class="text-right">
-        <a asp-controller="ConfecaoView" asp-action="Get" asp-route-receitaId="@Model.id">
-            <button type="button" class="btn btn-primary">Iniciar Passo</button>
-        </a>
-    </div>
-
-    <div class="text-left">
-        <a asp-controller="ConfecaoView" asp-action="Help" asp-route-receitaId="@Model.id">
-            <button type="button" class="btn btn-primary">Ajuda</button>
-        </a>
-    </div>
+        <div class="justify-content-center row my-4">
+            <div class="card text-center" style="width: 18rem;">
+                <div class="card-body">
+                    <p class="card-text"> @passo.descricao</p>
+                </div>
+            </div>
+        </div>
 
 
-   
+        <div class="justify-content-center row my-4">
+            <a asp-controller="ConfecaoView" asp-action="Get" asp-route-confecaoId="@Model.id">
+                <button type="button" class="btn btn-primary btn-lg">Iniciar Passo</button>
+            </a>
+        </div>
+
+        <div class="justify-content-center row my-4">
+            <a asp-controller="ConfecaoView" asp-action="Help" asp-route-confecaoId="@Model.id">
+                <button type="button" class="btn btn-primary btn-lg">Ajuda</button>
+            </a>
+        </div>
+
+
+
 
 </body>
 
 
 </html>
-

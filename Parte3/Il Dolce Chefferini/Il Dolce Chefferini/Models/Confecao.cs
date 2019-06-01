@@ -95,5 +95,20 @@ namespace Il_Dolce_Chefferini.Models
 
             return sum;
         }
+
+        public void IniciaPasso()
+        {
+            inicioPassoAtual = DateTime.Now;
+        }
+
+        public void FinalizaPasso()
+        {
+            if (passoAtual < receita.GetNumeroDePassos())
+            {
+                var passoAntes = receita.GetPasso(passoAtual);
+                tempoEmPasso.Add(new ConfecaoPasso(passoAntes, this, DateTime.Now - inicioPassoAtual));
+                passoAtual++;
+            }
+        }
     }
 }
