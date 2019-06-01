@@ -25,4 +25,8 @@
     <ItemGroup>
       <Content Remove="Views\ReceitasView\Ingredientes.cshtml" />
     </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Views\EmentaView" />
+    </ItemGroup>
 </Project>

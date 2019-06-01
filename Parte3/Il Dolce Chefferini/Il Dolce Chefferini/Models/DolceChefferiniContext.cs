@@ -82,7 +82,9 @@ namespace Il_Dolce_Chefferini.Models
 
                 entity.HasOne(e => e.utilizador)
                     .WithOne(e => e.ementa);
-            
+
+                entity.HasOne(e => e.receita);
+
             });
 
             modelBuilder.Entity<IngredientePasso>(entity =>

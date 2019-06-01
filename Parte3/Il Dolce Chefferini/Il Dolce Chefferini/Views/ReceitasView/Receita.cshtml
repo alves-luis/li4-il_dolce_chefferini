@@ -8,22 +8,27 @@
 </head>
 <body>
 <div class="container">
-    <div class="row justify-content-center my-2">
+    <div class="row justify-content-center my-3">
         <a asp-controller="ReceitasView" asp-action="Ingredientes" asp-route-id="@Model.id">
-            <button type="button" class="btn btn-primary">Ingredientes</button>
+            <button type="button" class="btn btn-primary btn-lg">Ingredientes</button>
         </a>
     </div>
-    <div class="row justify-content-center my-2">
+    <div class="row justify-content-center my-3">
         <a asp-controller="ReceitasView" asp-action="InformacaoNutricional" asp-route-id="@Model.id">
-            <button type="button" class="btn btn-primary">Informações nutricionais</button>
+            <button type="button" class="btn btn-primary btn-lg">Informações nutricionais</button>
         </a>
     </div>
-    <div class="row justify-content-center my-2">
-        <button type="button" class="btn btn-secondary">Não possuo os ingredientes</button>
+    <div class="row justify-content-center my-3">
+            <button type="button" class="btn btn-secondary btn-lg">Não possuo os ingredientes</button>
     </div>
-    <div class="row justify-content-center my-2">
+    <div class="row justify-content-center my-3">
         <a asp-controller="ConfecaoView" asp-action="Index" asp-route-receitaId="@Model.id">
-            <button type="button" class="btn btn-primary">Confecionar Receita</button>
+            <button type="button" class="btn btn-primary btn-lg">Confecionar Receita</button>
+        </a>
+    </div>
+    <div class="row justify-content-center my-3">
+        <a asp-controller="ReceitasView" asp-action="Index">
+            <button type="button" class="btn btn-info btn-lg">Voltar</button>
         </a>
     </div>
 </div>
