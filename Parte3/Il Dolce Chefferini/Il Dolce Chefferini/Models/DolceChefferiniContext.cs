@@ -83,7 +83,8 @@ namespace Il_Dolce_Chefferini.Models
                 entity.HasOne(e => e.utilizador)
                     .WithMany(e => e.ementa);
 
-                entity.HasOne(e => e.receita);
+                entity.HasOne(e => e.receita)
+                    .WithMany();
 
             });
 

@@ -37,5 +37,14 @@ namespace Il_Dolce_Chefferini.Controllers
 
             return Ok(u);
         }
+
+        [HttpGet("{id}")]
+        public ActionResult<Utilizador> Get(int id)
+        {
+            var u = _context.utilizadores.Find(id);
+            if (u == null)
+                return NotFound();
+            return Ok(u);
+        }
     }
 }

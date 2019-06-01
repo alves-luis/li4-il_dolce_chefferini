@@ -1,8 +1,9 @@
-using System.Data.Entity;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Il_Dolce_Chefferini.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Il_Dolce_Chefferini.Controllers
 {
@@ -47,6 +48,18 @@ namespace Il_Dolce_Chefferini.Controllers
             
             var receita = _context.receitas.Find(em.receitaId);
             return Ok(receita);
+        }
+
+        [HttpGet("{utilizadorId}")]
+        public ActionResult<IEnumerable<Ementa>> GetEmentas(int utilizadorId)
+        {
+            var em = _context.ementas.Include(e => e.receita)
+                .Where(e => e.utilizadorId == utilizadorId);
+
+            if (!em.Any())
+                return NoContent();
+
+            return Ok(em);
         }
     }
 }

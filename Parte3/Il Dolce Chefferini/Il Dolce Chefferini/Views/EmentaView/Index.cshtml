@@ -1,5 +1,8 @@
-@model Il_Dolce_Chefferini.Models.Utilizador
-
+@model Il_Dolce_Chefferini.Dto.EmentaDto
+@{
+    string almoco = "almoço";
+    string refeicao = "Almoço";
+}
 <!DOCTYPE html>
 
 <html>
@@ -7,9 +10,121 @@
     <title>Ementas</title>
 </head>
 <body>
-<h1></h1>
-<div>
 
+<h1 class="mx-3">Ementa</h1>
+<div class="row justify-content-center my-2">
+    <div class="mx-2 dropdown">
+        <button class="btn btn-primary btn-lg dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Dia da Semana
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" asp-controller="EmentaView" asp-action="DiaDaSemana" asp-route-receitaId="@Model.receitaId" asp-route-dia="Segunda" asp-route-refeicao="@Model.almoco">Segunda-feira</a>
+            <a class="dropdown-item" asp-controller="EmentaView" asp-action="DiaDaSemana" asp-route-receitaId="@Model.receitaId" asp-route-dia="Terça" asp-route-refeicao="@Model.almoco">Terça-feira</a>
+            <a class="dropdown-item" asp-controller="EmentaView" asp-action="DiaDaSemana" asp-route-receitaId="@Model.receitaId" asp-route-dia="Quarta" asp-route-refeicao="@Model.almoco">Quarta-feira</a>
+            <a class="dropdown-item" asp-controller="EmentaView" asp-action="DiaDaSemana" asp-route-receitaId="@Model.receitaId" asp-route-dia="Quinta" asp-route-refeicao="@Model.almoco">Quinta-feira</a>
+            <a class="dropdown-item" asp-controller="EmentaView" asp-action="DiaDaSemana" asp-route-receitaId="@Model.receitaId" asp-route-dia="Sexta" asp-route-refeicao="@Model.almoco">Sexta-feira</a>
+            <a class="dropdown-item" asp-controller="EmentaView" asp-action="DiaDaSemana" asp-route-receitaId="@Model.receitaId" asp-route-dia="Sábado" asp-route-refeicao="@Model.almoco">Sábado</a>
+            <a class="dropdown-item" asp-controller="EmentaView" asp-action="DiaDaSemana" asp-route-receitaId="@Model.receitaId" asp-route-dia="Domingo" asp-route-refeicao="@Model.almoco">Domingo</a>
+        </div>
+    </div>
+    <div class="mx-2 dropdown">
+        <button class="btn btn-info btn-lg dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Refeição
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" asp-controller="EmentaView" asp-action="Refeicao" asp-route-refeicao="true" asp-route-dia="@Model.diaDaSemana" asp-route-receitaId="@Model.receitaId">Almoço</a>
+            <a class="dropdown-item" asp-controller="EmentaView" asp-action="Refeicao" asp-route-refeicao="false" asp-route-dia="@Model.diaDaSemana" asp-route-receitaId="@Model.receitaId">Jantar</a>
+        </div>
+    </div>
 </div>
+
+<h2 class="mx-3">Receitas</h2>
+<div class="container-fluid">
+    <div class="table-responsive justify-content-center">
+        <table class="table justify-content-center ">
+            <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Imagem</th>
+            </tr>
+            </thead>
+            @foreach (var r in Model.receitas)
+            {
+                <tr>
+                    <td>
+                        <a asp-controller="EmentaView" asp-action="Refeicao" asp-route-refeicao="@Model.almoco" asp-route-dia="@Model.diaDaSemana" asp-route-receitaId="@r.id">@r.nome</a>
+                    </td>
+                    <td>
+                        <img src="/@r.imagem" alt="@r.nome" height="144px" width="256px"/>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+<div class="row justify-content-center my-2">
+    <div class="mx-2">
+        <a asp-controller="EmentaView" asp-action="Confirma" asp-route-refeicao="@Model.almoco" asp-route-dia="@Model.diaDaSemana" asp-route-receitaId="@Model.receitaId">
+            <button type="button" class="btn btn-lg btn-primary">Confirmar</button>
+        </a>
+    </div>
+    <div class="mx-2">
+        <a asp-controller="UtilizadoresView" asp-action="Index">
+            <button type="button" class="btn btn-lg btn-primary">Voltar</button>
+        </a>
+    </div>
+</div>
+<div class="row justify-content-center my-2">
+    @if (@Model.almoco != null && @Model.almoco.Value)
+    {
+        almoco = "almoço";
+    }
+    @if (@Model.almoco != null && !@Model.almoco.Value)
+    {
+        almoco = "jantar";
+    }
+    @if (@Model.sucesso)
+    {
+        <p>Adicionaste a receita @Model.receitas.Where(e => e.id == @Model.receitaId).First().nome a @Model.diaDaSemana ao @almoco</p>
+    }
+</div>
+
+<h2 class="mx-3">Minha Ementa</h2>
+<div class="container-fluid">
+    <div class="table-responsive justify-content-center">
+        <table class="table justify-content-center ">
+            <thead>
+            <tr>
+                <th>Dia da Semana</th>
+                <th>Refeição</th>
+                <th>Sobremesa</th>
+            </tr>
+            </thead>
+            @foreach (var r in Model.ementas)
+            {
+                <tr>
+                    <td>
+                        @r.diaDaSemana
+                    </td>
+                    <td>
+                        @if (r.almoco)
+                        {
+                            refeicao = "Almoço";
+                        }
+                        @if (!r.almoco)
+                        {
+                            refeicao = "Jantar";
+                        }
+                        @refeicao
+                    </td>
+                    <td>
+                        @r.receita.nome
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+
 </body>
 </html>

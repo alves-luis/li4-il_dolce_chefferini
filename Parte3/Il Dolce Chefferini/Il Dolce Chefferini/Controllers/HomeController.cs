@@ -41,5 +41,10 @@ namespace Il_Dolce_Chefferini.Controllers
         {
             return View("Sobre");
         }
+
+        public IActionResult Ementa()
+        {
+            return RedirectToAction("Index", "EmentaView");
+        }
     }
 }
