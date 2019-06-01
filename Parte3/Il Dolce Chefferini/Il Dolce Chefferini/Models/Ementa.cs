@@ -11,8 +11,14 @@ namespace Il_Dolce_Chefferini.Models
             receitaId = 1;
             diaDaSemana = "domingo";
             almoco = true;
-            utilizador = new Utilizador();
-            receita = new Receita();
+        }
+
+        public Ementa(int u, int r, string dia, bool al)
+        {
+            utilizadorId = u;
+            receitaId = r;
+            diaDaSemana = dia;
+            almoco = al;
         }
 
         [ForeignKey("Utilizador")] public int utilizadorId { get; set; }

@@ -11,10 +11,14 @@ namespace Il_Dolce_Chefferini.Models
     {
         public Utilizador()
         {
-            id = 1;
             email = "foo@bar.foo";
             password = "password";
-            confecoes = new List<Confecao>();
+        }
+
+        public Utilizador(string em, string pass)
+        {
+            email = em;
+            password = pass;
         }
 
         [Key] public int id { get; set; }

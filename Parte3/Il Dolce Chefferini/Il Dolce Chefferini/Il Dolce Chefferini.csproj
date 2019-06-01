@@ -30,4 +30,8 @@
     <ItemGroup>
       <Folder Include="Views\AvaliacaoView\" />
     </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Views\EmentaView" />
+    </ItemGroup>
 </Project>

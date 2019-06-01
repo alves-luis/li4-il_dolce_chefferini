@@ -1,3 +1,4 @@
+using System.Linq;
 using Microsoft.EntityFrameworkCore;
 
 namespace Il_Dolce_Chefferini.Models
@@ -81,7 +82,9 @@ namespace Il_Dolce_Chefferini.Models
 
                 entity.HasOne(e => e.utilizador)
                     .WithOne(e => e.ementa);
-            
+
+                entity.HasOne(e => e.receita);
+
             });
 
             modelBuilder.Entity<IngredientePasso>(entity =>
@@ -272,6 +275,37 @@ namespace Il_Dolce_Chefferini.Models
                     .WithOne(); */
 
             });
+        }
+
+        public Utilizador Autenticar(string email, string password)
+        {
+            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
+                return null;
+
+            var utilizador = utilizadores.SingleOrDefault(us => us.email == email);
+
+            if (utilizador == null)
+                return null;
+
+            if (utilizador.password == password)
+                return utilizador;
+            
+            return null;
+        }
+
+        public Utilizador Registar(string email, string password)
+        {
+            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
+                return null;
+
+            var utilizador = utilizadores.SingleOrDefault(us => us.email == email);
+            if (utilizador != null)
+                return null;
+            
+            Utilizador u = new Utilizador(email, password);
+
+            utilizadores.Add(u);
+            return u;
         }
     }
 }

@@ -1,0 +1,40 @@
+@model Il_Dolce_Chefferini.Models.Utilizador
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="my-2">
+            <img src="pictures/logotipo.jpeg" class="img-responsive" alt="Landing page beautiful picture"/>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="my-3">
+            <a asp-controller="Home" asp-action="Receita">
+                <button type="button" class="btn btn-primary btn-lg">Receitas</button>
+            </a>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="my-3">
+            <a>
+                <button type="button" class="btn btn-secondary btn-lg">Ementa</button>
+            </a>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="my-3">
+            <a>
+                <button type="button" class="btn btn-secondary btn-lg">Configuração Inicial</button>
+            </a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
