@@ -78,26 +78,5 @@ namespace Il_Dolce_Chefferini.Controllers
 
             return CreatedAtAction(nameof(GetReceita), new {r.id}, r);
         }
-
-        // PUT: api/Receita/id
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutReceita(int id, Receita r)
-        {
-            if (id != r.id)
-                return BadRequest();
-
-            if (_context.receitas.Contains(r))
-            {
-                _context.Entry(r).State = EntityState.Modified;
-                await _context.SaveChangesAsync();
-            }
-            else
-            {
-                return BadRequest();
-            }
-
-
-            return NoContent();
-        }
     }
 }
