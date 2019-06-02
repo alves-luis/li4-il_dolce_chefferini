@@ -7,6 +7,25 @@
     <title>@Model.nome</title>
 </head>
 <body>
+<div class="row justify-content-center">
+    <h1>@Model.nome</h1>
+</div>
+
+<div class="row justify-content-center">
+    <div class="my-3">
+        <img src="/@Model.imagem" class="img-responsive" alt="Receita linda" height="144px" width="256px"/>
+    </div>
+</div>
+
+<div class="justify-content-center row my-4">
+    <div class="card text-center" style="width: 18rem;">
+        <div class="card-body">
+            <p>@Model.descricao</p>
+            <p><b>Tempo: </b>@Model.tempoEsperado.Minutes min @Model.tempoEsperado.Seconds s</p>
+            <p><b>Doses: </b>@Model.doses</p>
+        </div>
+    </div>
+</div>
 <div class="container">
     <div class="row justify-content-center my-3">
         <a asp-controller="ReceitasView" asp-action="Ingredientes" asp-route-id="@Model.id">
@@ -19,7 +38,7 @@
         </a>
     </div>
     <div class="row justify-content-center my-3">
-            <button type="button" class="btn btn-secondary btn-lg">Não possuo os ingredientes</button>
+        <button type="button" class="btn btn-secondary btn-lg">Não possuo os ingredientes</button>
     </div>
     <div class="row justify-content-center my-3">
         <a asp-controller="ConfecaoView" asp-action="Index" asp-route-receitaId="@Model.id">

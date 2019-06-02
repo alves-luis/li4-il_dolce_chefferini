@@ -22,8 +22,7 @@ namespace Il_Dolce_Chefferini
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            var connection = "Data Source=DESKTOP-HOME\\DOLCECHEFFERINI;Initial Catalog=LI4;Integrated Security=True";
-            services.AddDbContext<DolceChefferiniContext>(opt => opt.UseInMemoryDatabase());
+            services.AddDbContext<DolceChefferiniContext>(opt => opt.UseInMemoryDatabase("MemDB",null));
             services.AddMvc()
                 .AddJsonOptions(
                 options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore

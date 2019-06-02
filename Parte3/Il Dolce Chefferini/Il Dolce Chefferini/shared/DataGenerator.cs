@@ -37,7 +37,7 @@ namespace Il_Dolce_Chefferini.shared
                 Receita r = new Receita();
                 r.nome = "Tiramisú";
                 r.descricao =
-                    "O tiramisú é uma sobremesa italiana, possivelmente originária da cidade de Treviso, na região do Vêneto e que consiste em camadas de biscoitos de champagne entremeadas por um creme doce";
+                    "O Tiramisú é uma sobremesa italiana, possivelmente originária da cidade de Treviso, na região do Veneto e que consiste em camadas de biscoitos de champagne entremeadas por um creme doce.";
                 r.doses = 10;
                 r.tempoEsperado = TimeSpan.FromSeconds(55);
                 r.grauDificuldade = 2;
