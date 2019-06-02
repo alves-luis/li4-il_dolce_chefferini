@@ -39,7 +39,7 @@ namespace Il_Dolce_Chefferini.shared
                 r.descricao =
                     "O Tiramisú é uma sobremesa italiana, possivelmente originária da cidade de Treviso, na região do Veneto e que consiste em camadas de biscoitos de champagne entremeadas por um creme doce.";
                 r.doses = 10;
-                r.tempoEsperado = TimeSpan.FromSeconds(55);
+                r.tempoEsperado = TimeSpan.FromHours(4.5);
                 r.grauDificuldade = 2;
                 r.calorias = 492;
                 r.lipidos = 32;
@@ -241,7 +241,7 @@ namespace Il_Dolce_Chefferini.shared
                 
                 Passo p15 = new Passo();
                 p15.receitaId = 1;
-                p15.descricao = "Leve ao frigorífico durante 4 horas até ficar bem fresquinho.Depois de frio está pronto a servir";
+                p15.descricao = "Leve ao frigorífico durante 4 horas até ficar bem fresquinho. Depois de frio está pronto a servir";
                 p15.tempoEsperado = TimeSpan.FromSeconds(30);
                 p15.numeroSequencia = 15;
                 p15.receita = r;

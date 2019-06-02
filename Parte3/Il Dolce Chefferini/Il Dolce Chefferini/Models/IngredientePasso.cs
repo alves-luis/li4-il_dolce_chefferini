@@ -21,6 +21,8 @@ namespace Il_Dolce_Chefferini.Models
             ingredienteId = i.id;
             quantidade = qt;
             unidade = un;
+            ingrediente = i;
+            passo = p;
         }
 
         [ForeignKey("Receita")]

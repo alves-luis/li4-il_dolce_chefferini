@@ -116,7 +116,7 @@ namespace Il_Dolce_Chefferini.Controllers
         }
 
 
-        // finaliza passo, dado o id de uma confecao
+        // finaliza confeção, dado o id de uma confecao
         [HttpGet("{confecaoId}/final")]
         public ActionResult<Confecao> FinalizaConfecao(int confecaoId)
         {
