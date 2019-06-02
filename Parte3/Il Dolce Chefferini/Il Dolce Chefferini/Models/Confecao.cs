@@ -82,7 +82,7 @@ namespace Il_Dolce_Chefferini.Models
         public void TerminaConfecao()
         {
             var numeroDePassos = receita.GetNumeroDePassos();
-            if (numeroDePassos > passoAtual)
+            if (numeroDePassos != passoAtual)
                 bemSucedida = false;
             else
                 bemSucedida = true;

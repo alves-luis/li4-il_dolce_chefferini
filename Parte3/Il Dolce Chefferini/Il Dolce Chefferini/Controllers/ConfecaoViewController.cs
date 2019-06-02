@@ -43,5 +43,13 @@ namespace Il_Dolce_Chefferini.Controllers
             var confecao = await response.Content.ReadAsAsync<Confecao>();
             return View("PrePasso", confecao);
         }
+
+        public async Task<ActionResult> Avalia(int confecaoId)
+        {
+            var client = new HttpClient();
+            var response = await client.GetAsync("http://localhost:5000/api/Confecao/" + confecaoId + "/final");
+            var confecao = await response.Content.ReadAsAsync<Confecao>();
+            return View("Avaliacao", confecao);
+        }
     }
 }
