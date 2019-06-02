@@ -22,10 +22,7 @@ namespace Il_Dolce_Chefferini.Models
             proteinas = 40;
             doses = 4;
             criador = "Foo";
-            temperatura = new Temperatura();
-            temperaturaId = temperatura.id;
             tempoEsperado = TimeSpan.FromMinutes(5);
-            passos = new List<Passo>();
             imagem = "pictures/tiramissu.jpg";
         }
 

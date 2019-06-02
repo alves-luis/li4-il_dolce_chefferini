@@ -14,13 +14,11 @@ namespace Il_Dolce_Chefferini.Models
             utilidadeAjudas = null;
             grauSatisfacao = 0;
             data = DateTime.Now;
-            confecao = new Confecao();
         }
 
         public Avaliacao(Confecao c, int dif, int grau)
         {
             confecaoId = c.id;
-            confecao = c;
             dificuldade = dif;
             grauSatisfacao = grau;
             data = DateTime.Now;

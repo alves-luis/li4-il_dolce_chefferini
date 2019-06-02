@@ -8,7 +8,6 @@ namespace Il_Dolce_Chefferini.Models
     {
         public Ingrediente()
         {
-            id = 1;
             nome = "Ingrediente Default";
             comida = true;
         }
