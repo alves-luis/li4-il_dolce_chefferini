@@ -23,17 +23,20 @@
         <img src="/@passo.aspetoEsperado" class="img-responsive">
     </div>
 
-    <div class="justify-content-center row my-4">
-        <div class="card text-center" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title">Ingredientes</h5>
-                @foreach (var r in passo.ingredientes)
-                {
-                    <p class="card-text"> @r.quantidade @r.ingrediente.nome (@r.unidade) </p>
-                }
+    @if (passo.ingredientes.Count > 0)
+    {
+        <div class="justify-content-center row my-4">
+            <div class="card text-center" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Ingredientes</h5>
+                    @foreach (var r in passo.ingredientes)
+                    {
+                        <p class="card-text"> @r.quantidade @r.ingrediente.nome (@r.unidade) </p>
+                    }
+                </div>
             </div>
         </div>
-    </div>
+    }
 
     <div class="justify-content-center row my-4">
         <div class="card text-center" style="width: 18rem;">
@@ -43,7 +46,7 @@
         </div>
     </div>
 
-    
+
     <div class="justify-content-center row my-4">
         <a asp-controller="ConfecaoView" asp-action="Inicia" asp-route-confecaoId="@Model.id">
             <button type="button" class="btn btn-primary btn-lg">Iniciar Passo</button>

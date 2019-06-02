@@ -23,6 +23,8 @@
         <img src="/@passo.aspetoEsperado" class="img-responsive">
     </div>
 
+    @if (passo.ingredientes.Count > 0)
+    {
     <div class="justify-content-center row my-4">
         <div class="card text-center" style="width: 18rem;">
             <div class="card-body">
@@ -34,6 +36,7 @@
             </div>
         </div>
     </div>
+    }
 
     <div class="justify-content-center row my-4">
         <div class="card text-center" style="width: 18rem;">
