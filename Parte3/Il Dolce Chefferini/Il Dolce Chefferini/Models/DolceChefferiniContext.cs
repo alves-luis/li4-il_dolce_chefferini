@@ -113,8 +113,7 @@ namespace Il_Dolce_Chefferini.Models
 
                 entity.Property(e => e.numeroSequencia)
                     .IsRequired()
-                    .HasColumnName("numeroSequencia")
-                    .ValueGeneratedOnAdd();
+                    .HasColumnName("numeroSequencia");
 
                 entity.Property(e => e.descricao)
                     .IsRequired()
