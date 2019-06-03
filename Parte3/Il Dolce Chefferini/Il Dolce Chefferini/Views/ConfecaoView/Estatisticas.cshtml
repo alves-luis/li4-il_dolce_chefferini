@@ -1,0 +1,47 @@
+﻿@model Il_Dolce_Chefferini.Models.Confecao
+
+@{
+    var real = @Model.tempoEmPasso;
+
+    var esperado = @Model.receita.passos;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Estatísticas</title>
+</head>
+
+
+<body>
+    <div class="justify-content-center row my-2">
+        <h1> Estatísticas </h1>
+    </div>
+
+    @for (var i = 0; i < @Model.receita.GetNumeroDePassos(); i++)
+    {
+      <div class="justify-content-center row my-2">
+          <h3> Passo @i</h3>
+      </div>
+
+      <div class="progress" class="justify-content-center row my-2">
+          @{
+              double max = 2 * @esperado.ElementAt(i).tempoEsperado.TotalSeconds;
+              double now = real.ElementAt(i).tempo.TotalSeconds / max * 100;
+          }
+          <div class="progress-bar bg-success" role="progressbar" style="width: @Html.Raw(now)%" aria-valuenow="@Html.Raw(now)" aria-valuemin="0" aria-valuemax="200"></div>
+      </div>
+    }
+
+      <div class="justify-content-center row my-4">
+          <a asp-controller="ConfecaoView" asp-action="Avalia" asp-route-confecaoId="@Model.id">
+              <button type="button" class="btn btn-primary btn-lg">Continuar</button>
+          </a>
+      </div>
+  
+    </body>
+
+
+</html>

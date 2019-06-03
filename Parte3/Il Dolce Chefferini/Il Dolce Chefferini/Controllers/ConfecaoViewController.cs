@@ -89,9 +89,17 @@ namespace Il_Dolce_Chefferini.Controllers
         public async Task<ActionResult> Avalia(int confecaoId)
         {
             var client = new HttpClient();
-            var response = await client.GetAsync("http://localhost:5000/api/Confecao/" + confecaoId + "/final");
+            var response = await client.GetAsync("http://localhost:5000/api/Confecao/" + confecaoId + "/get");
             var confecao = await response.Content.ReadAsAsync<Confecao>();
             return RedirectToAction("Index", "AvaliacaoView",new {idConfecao=confecaoId});
+        }
+
+        public async Task<ActionResult> Estatistica(int confecaoId)
+        {
+            var client = new HttpClient();
+            var response = await client.GetAsync("http://localhost:5000/api/Confecao/" + confecaoId + "/final");
+            var confecao = await response.Content.ReadAsAsync<Confecao>();
+            return View("Estatisticas", confecao);
         }
 
         public IActionResult Cancela()
