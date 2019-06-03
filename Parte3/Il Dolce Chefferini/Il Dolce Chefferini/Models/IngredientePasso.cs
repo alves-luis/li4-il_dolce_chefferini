@@ -1,9 +1,10 @@
+using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Il_Dolce_Chefferini.Models
 {
     [Table("IngredientePasso")]
-    public class IngredientePasso
+    public class IngredientePasso : IEquatable<IngredientePasso>
     {
         public IngredientePasso()
         {
@@ -37,5 +38,11 @@ namespace Il_Dolce_Chefferini.Models
         public virtual Ingrediente ingrediente { get; set; }
 
         public virtual Passo passo { get; set; }
+
+        public bool Equals(IngredientePasso other)
+        {
+            return receitaId == other.receitaId && quantidade == other.quantidade && unidade == other.unidade
+                && ingredienteId == other.ingredienteId;
+        }
     }
 }

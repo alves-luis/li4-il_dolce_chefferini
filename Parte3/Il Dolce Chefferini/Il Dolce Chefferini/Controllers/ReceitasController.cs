@@ -58,7 +58,9 @@ namespace Il_Dolce_Chefferini.Controllers
         {
             var ingredientes = _context.ingredientesPassos
                 .Include(p => p.ingrediente)
-                .Where(p => p.receitaId == id).ToList();
+                .Where(p => p.receitaId == id)
+                .Distinct()
+                .ToList();
             return ingredientes;
         }
         
