@@ -25,6 +25,8 @@ namespace Il_Dolce_Chefferini.Controllers
             var response = await client.GetAsync("http://localhost:5000/api/Confecao/" + confecaoId + "/get");
             var confecao = await response.Content.ReadAsAsync<Confecao>();
             response = await client.PostAsync(new Uri("http://localhost:5000/api/Confecao/" + confecaoId + "/ajuda"), null);
+
+
             return View("Help", confecao);
        }
 

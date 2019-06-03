@@ -79,6 +79,7 @@ namespace Il_Dolce_Chefferini.Models
             avaliacao = new Avaliacao(this.id,dif,ajuda,satis);
         }
 
+
         public void TerminaConfecao()
         {
             var numeroDePassos = receita.GetNumeroDePassos();

@@ -18,51 +18,62 @@ namespace Il_Dolce_Chefferini.Controllers
             var client = new HttpClient();
             var response = await client.GetAsync("http://localhost:5000/api/Confecao/" + idConfecao + "/get");
             var confecao = await response.Content.ReadAsAsync<Confecao>();
-            var dto = new AvaliacaoDto(idConfecao);
+           
+           var dto = new AvaliacaoDto(idConfecao);
             dto.usouAjuda = confecao.usouAjuda;
             return View(dto);
         }
 
-        public async Task<ActionResult> AvaliaDif(int idConfecao, int dif, int? ajuda, int? satis)
+        public async Task<ActionResult> AvaliaDif(int idConfecao, int dif, int? ajuda, int? satis, bool usouAjuda)
         {
 
             var dto = new AvaliacaoDto(idConfecao);
             dto.dificuldade = dif;
             dto.satisfacao = satis;
             dto.ajuda = ajuda;
+            dto.usouAjuda = usouAjuda;
 
             return View("Index", dto);
         }
 
-        public async Task<ActionResult> AvaliaAjuda(int idConfecao, int dif, int? ajuda, int? satis)
+        public async Task<ActionResult> AvaliaAjuda(int idConfecao, int dif, int? ajuda, int? satis, bool usouAjuda)
         {
 
             var dto = new AvaliacaoDto(idConfecao);
             dto.dificuldade = dif;
             dto.satisfacao = satis;
             dto.ajuda = ajuda;
+            dto.usouAjuda = usouAjuda;
 
             return View("Index", dto);
         }
 
-        public async Task<ActionResult> AvaliaSatis(int idConfecao, int dif, int? ajuda, int satis)
+        public async Task<ActionResult> AvaliaSatis(int idConfecao, int dif, int? ajuda, int satis, bool usouAjuda)
         {
 
             var dto = new AvaliacaoDto(idConfecao);
             dto.dificuldade = dif;
             dto.satisfacao = satis;
             dto.ajuda = ajuda;
+            dto.usouAjuda = usouAjuda;
 
             return View("Index", dto);
         }
 
 
 
-        public async Task<ActionResult> Confirma(int idConfecao, int dif, int? ajuda, int satis)
+        public async Task<ActionResult> Confirma(int idConfecao, int dif, int? ajuda, int satis, bool usouAjuda)
         {
             var client = new HttpClient();
             var response = await client.PostAsync("http://localhost:5000/api/Avaliacao/" + idConfecao + "/" + dif + "/" + ajuda + "/" + satis, null);
 
-            return View("Ola");
+            var dto = new AvaliacaoDto(idConfecao);
+            dto.dificuldade = dif;
+            dto.satisfacao = satis;
+            dto.ajuda = ajuda;
+            dto.usouAjuda = usouAjuda;
+
+            return View("Ola",dto);
         }
     }
+}
