@@ -235,7 +235,7 @@ namespace Il_Dolce_Chefferini.shared
                 p11.numeroSequencia = 11;
                 p11.receita = r;
                 p11.aspetoEsperado = "pictures/passo11.jpg";
-                p11.urlVideo = "https://www.youtube.com/embed/tx72s86URhA";
+                p11.urlVideo = null;
 
                 IngredientePasso i11_1 = new IngredientePasso(cacau, p11, 150, "g");
                 IngredientePasso i11_2 = new IngredientePasso(peneira, p11, 1, "unitário");
