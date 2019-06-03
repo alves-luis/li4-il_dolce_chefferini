@@ -1,0 +1,74 @@
+@model Il_Dolce_Chefferini.Dto.AvaliacaoDto
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Avaliaçao</title>
+</head>
+<body>
+
+<h1 class="mx-3">Avaliaçao</h1>
+
+<div class="row justify-content-center my-2">
+    <h2> Dificuldade </h2>
+    <a asp-controller="AvaliacaoView" asp-action="AvaliaDif" asp-route-idConfecao="@Model.idConfecao" asp-route-dif="1" >
+        <img src="/pictures/estrela.jpeg" class="img-responsive" width="28.85" height="28.85">
+    </a>
+    <a asp-controller="AvaliacaoView" asp-action="AvaliaDif" asp-route-idConfecao="@Model.idConfecao" asp-route-dif="2" >
+        <img src="/pictures/estrela.jpeg" class="img-responsive" width="28.85" height="28.85">
+    </a>
+    <a asp-controller="AvaliacaoView" asp-action="AvaliaDif" asp-route-idConfecao="@Model.idConfecao" asp-route-dif="3" >
+        <img src="/pictures/estrela.jpeg" class="img-responsive" width="28.85" height="28.85">
+    </a>
+    <a asp-controller="AvaliacaoView" asp-action="AvaliaDif" asp-route-idConfecao="@Model.idConfecao" asp-route-dif="4" >
+        <img src="/pictures/estrela.jpeg" class="img-responsive" width="28.85" height="28.85">
+    </a>
+    <a asp-controller="AvaliacaoView" asp-action="AvaliaDif" asp-route-idConfecao="@Model.idConfecao" asp-route-dif="5" >
+        <img src="/pictures/estrela.jpeg" class="img-responsive" width="28.85" height="28.85">
+    </a>
+</div>
+
+@if (@Model.usouAjuda)
+{
+    <div class="row justify-content-center my-2">
+        <h2> Utilizade das ajudas </h2>
+        <a asp-controller="AvaliacaoView" asp-action="AvaliaAjuda" asp-route-idConfecao="@Model.idConfecao" asp-route-ajuda="1">
+            <img src="/pictures/estrela.jpeg" class="img-responsive" width="28.85" height="28.85">
+        </a>
+        <a asp-controller="AvaliacaoView" asp-action="AvaliaAjuda" asp-route-idConfecao="@Model.idConfecao" asp-route-ajuda="2">
+            <img src="/pictures/estrela.jpeg" class="img-responsive" width="28.85" height="28.85">
+        </a>
+        <a asp-controller="AvaliacaoView" asp-action="AvaliaAjuda" asp-route-idConfecao="@Model.idConfecao" asp-route-ajuda="3">
+            <img src="/pictures/estrela.jpeg" class="img-responsive" width="28.85" height="28.85">
+        </a>
+        <a asp-controller="AvaliacaoView" asp-action="AvaliaAjuda" asp-route-idConfecao="@Model.idConfecao" asp-route-ajuda="4">
+            <img src="/pictures/estrela.jpeg" class="img-responsive" width="28.85" height="28.85">
+        </a>
+        <a asp-controller="AvaliacaoView" asp-action="AvaliaAjuda" asp-route-idConfecao="@Model.idConfecao" asp-route-ajuda="5">
+            <img src="/pictures/estrela.jpeg" class="img-responsive" width="28.85" height="28.85">
+        </a>
+    </div>
+}
+
+<div class="row justify-content-center my-2">
+    <h2> Grau de Satisfaçao </h2>
+    <a asp-controller="AvaliacaoView" asp-action="AvaliaSatis" asp-route-idConfecao="@Model.idConfecao" asp-route-satis="1">
+        <img src="/pictures/estrela.jpeg" class="img-responsive" width="28.85" height="28.85">
+    </a>
+    <a asp-controller="AvaliacaoView" asp-action="AvaliaSatis" asp-route-idConfecao="@Model.idConfecao" asp-route-satis="2">
+        <img src="/pictures/estrela.jpeg" class="img-responsive" width="28.85" height="28.85">
+    </a>
+    <a asp-controller="AvaliacaoView" asp-action="AvaliaSatis" asp-route-idConfecao="@Model.idConfecao" asp-route-satis="3">
+        <img src="/pictures/estrela.jpeg" class="img-responsive" width="28.85" height="28.85">
+    </a>
+    <a asp-controller="AvaliacaoView" asp-action="AvaliaSatis" asp-route-idConfecao="@Model.idConfecao" asp-route-satis="4">
+        <img src="/pictures/estrela.jpeg" class="img-responsive" width="28.85" height="28.85">
+    </a>
+    <a asp-controller="AvaliacaoView" asp-action="AvaliaSatis" asp-route-idConfecao="@Model.idConfecao" asp-route-satis="5">
+        <img src="/pictures/estrela.jpeg" class="img-responsive" width="28.85" height="28.85">
+    </a>
+</div>
+
+</body>
+</html>

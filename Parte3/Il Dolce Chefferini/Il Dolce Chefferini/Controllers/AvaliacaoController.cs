@@ -25,8 +25,18 @@ namespace Il_Dolce_Chefferini.Controllers
             Avaliacao e = new Avaliacao(idConfecao, dificuldade, ajuda, satisfacao);
             if (_context.avaliacoes.Any(em => em.Equals(e)))
                 return Conflict();
+            
+            var c = _context.confecoes
+                .Include(conf => conf.receita)
+                .Include(conf => conf.receita.passos)
+                .First(a => a.id == idConfecao);
+            if (c == null)
+                return NoContent();
 
+            c.AvaliaConfecao(dificuldade, ajuda, satisfacao);
             _context.avaliacoes.Add(e);
+            _context.confecoes.Update(c);
+            
             await _context.SaveChangesAsync();
             return Ok(e);
         }

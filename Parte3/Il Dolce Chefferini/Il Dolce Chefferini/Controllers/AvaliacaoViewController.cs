@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -14,113 +14,55 @@ namespace Il_Dolce_Chefferini.Controllers
     {
         public async Task<ActionResult> Index(int idConfecao)
         {
+            Console.WriteLine(idConfecao + "\n");
             var client = new HttpClient();
-            var response = await client.GetAsync("http://localhost:5000/api/Confecao/ "+ idConfecao);
-
-            return View();
+            var response = await client.GetAsync("http://localhost:5000/api/Confecao/" + idConfecao + "/get");
+            var confecao = await response.Content.ReadAsAsync<Confecao>();
+            var dto = new AvaliacaoDto(idConfecao);
+            dto.usouAjuda = confecao.usouAjuda;
+            return View(dto);
         }
 
-        public async Task<ActionResult> AvaliacaoDificuldade(int idConfecao,int dif, bool? ajuda, int? satisfacao)
+        public async Task<ActionResult> AvaliaDif(int idConfecao, int dif, int? ajuda, int? satis)
         {
-            var client = new HttpClient();
-            var response = await client.GetAsync("http://localhost:5000/api/Confecao/ " + idConfecao);
-            var utilizador = await response.Content.ReadAsAsync<Utilizador>();
-            response = await client.GetAsync("http://localhost:5000/api/Receitas");
-            var receitas = response.Content.ReadAsAsync<ICollection<Receita>>().Result;
 
+            var dto = new AvaliacaoDto(idConfecao);
+            dto.dificuldade = dif;
+            dto.satisfacao = satis;
+            dto.ajuda = ajuda;
 
-            var dto = new EmentaDto(utilizador);
-            //dto.almoco = refeicao;
-            //dto.diaDaSemana = dia;
-            dto.receitas = receitas;
-            //dto.receitaId = receitaId;
-            dto.sucesso = false;
-            response = await client.GetAsync("http://localhost:5000/api/Ementa/1");
-            if (response.StatusCode == HttpStatusCode.OK)
-            {
-                var ementas = await response.Content.ReadAsAsync<IEnumerable<Ementa>>();
-                dto.ementas = ementas.OrderByDescending(e => e.diaDaSemana);
-            }
             return View("Index", dto);
         }
 
-        public async Task<ActionResult> Refeicao(string dia, bool refeicao, int? receitaId)
+        public async Task<ActionResult> AvaliaAjuda(int idConfecao, int dif, int? ajuda, int? satis)
         {
-            var client = new HttpClient();
-            var response = await client.GetAsync("http://localhost:5000/api/Utilizadores/1");
-            var utilizador = await response.Content.ReadAsAsync<Utilizador>();
-            response = await client.GetAsync("http://localhost:5000/api/Receitas");
-            var receitas = response.Content.ReadAsAsync<ICollection<Receita>>().Result;
 
-            var dto = new EmentaDto(utilizador);
-            dto.almoco = refeicao;
-            dto.diaDaSemana = dia;
-            dto.receitas = receitas;
-            dto.receitaId = receitaId;
-            dto.sucesso = false;
-            response = await client.GetAsync("http://localhost:5000/api/Ementa/1");
-            if (response.StatusCode == HttpStatusCode.OK)
-            {
-                var ementas = await response.Content.ReadAsAsync<IEnumerable<Ementa>>();
-                dto.ementas = ementas.OrderByDescending(e => e.diaDaSemana);
-            }
+            var dto = new AvaliacaoDto(idConfecao);
+            dto.dificuldade = dif;
+            dto.satisfacao = satis;
+            dto.ajuda = ajuda;
+
             return View("Index", dto);
         }
 
-        public async Task<ActionResult> Receita(string dia, bool? refeicao, int receitaId)
+        public async Task<ActionResult> AvaliaSatis(int idConfecao, int dif, int? ajuda, int satis)
         {
-            var client = new HttpClient();
-            var response = await client.GetAsync("http://localhost:5000/api/Utilizadores/1");
-            var utilizador = await response.Content.ReadAsAsync<Utilizador>();
-            response = await client.GetAsync("http://localhost:5000/api/Receitas");
-            var receitas = response.Content.ReadAsAsync<ICollection<Receita>>().Result;
 
+            var dto = new AvaliacaoDto(idConfecao);
+            dto.dificuldade = dif;
+            dto.satisfacao = satis;
+            dto.ajuda = ajuda;
 
-            var dto = new EmentaDto(utilizador);
-            dto.almoco = refeicao;
-            dto.diaDaSemana = dia;
-            dto.receitas = receitas;
-            dto.receitaId = receitaId;
-            dto.sucesso = false;
-            response = await client.GetAsync("http://localhost:5000/api/Ementa/1");
-            if (response.StatusCode == HttpStatusCode.OK)
-            {
-                var ementas = await response.Content.ReadAsAsync<IEnumerable<Ementa>>();
-                dto.ementas = ementas.OrderByDescending(e => e.diaDaSemana);
-            }
             return View("Index", dto);
         }
 
-        public async Task<ActionResult> Confirma(string dia, bool? refeicao, int? receitaId)
+
+
+        public async Task<ActionResult> Confirma(int idConfecao, int dif, int? ajuda, int satis)
         {
             var client = new HttpClient();
-            var response = await client.GetAsync("http://localhost:5000/api/Utilizadores/1");
-            var utilizador = await response.Content.ReadAsAsync<Utilizador>();
-            response = await client.GetAsync("http://localhost:5000/api/Receitas");
-            var receitas = response.Content.ReadAsAsync<ICollection<Receita>>().Result;
+            var response = await client.PostAsync("http://localhost:5000/api/Avaliacao/" + idConfecao + "/" + dif + "/" + ajuda + "/" + satis, null);
 
-            response = await client.PostAsync("http://localhost:5000/api/Ementa/1/" + dia + "/" + refeicao + "/" + receitaId, null);
-
-            var dto = new EmentaDto(utilizador);
-
-            if (response.StatusCode == HttpStatusCode.Created)
-                dto.sucesso = true;
-            else
-                dto.sucesso = false;
-
-
-            dto.almoco = refeicao;
-            dto.diaDaSemana = dia;
-            dto.receitas = receitas;
-            dto.receitaId = receitaId;
-            response = await client.GetAsync("http://localhost:5000/api/Ementa/1");
-            if (response.StatusCode == HttpStatusCode.OK)
-            {
-                var ementas = await response.Content.ReadAsAsync<IEnumerable<Ementa>>();
-                dto.ementas = ementas.OrderByDescending(e => e.diaDaSemana);
-            }
-
-            return View("Index", dto);
+            return View("Ola");
         }
     }
-}
