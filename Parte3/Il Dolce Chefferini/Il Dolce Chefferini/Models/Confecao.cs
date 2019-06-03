@@ -74,9 +74,22 @@ namespace Il_Dolce_Chefferini.Models
             usouAjuda = true;
         }
 
-        public void AvaliaConfecao(int dificuldade, int grauSatisfacao)
+        public void AvaliaConfecao()
         {
-            avaliacao = new Avaliacao(this, dificuldade, grauSatisfacao);
+            avaliacao = new Avaliacao(this);
+        }
+
+        public void AvaliaDificuldade(int dif)
+        {
+            avaliacao.dificuldade = dif;
+        }
+        public void AvaliaAjuda(int aj)
+        {
+            avaliacao.utilidadeAjudas = aj;
+        }
+        public void AvaliaSatisfacao(int satis)
+        {
+            avaliacao.grauSatisfacao = satis;
         }
 
         public void TerminaConfecao()

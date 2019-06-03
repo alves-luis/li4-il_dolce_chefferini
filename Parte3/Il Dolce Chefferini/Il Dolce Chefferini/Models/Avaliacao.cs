@@ -16,13 +16,14 @@ namespace Il_Dolce_Chefferini.Models
             data = DateTime.Now;
         }
 
-        public Avaliacao(Confecao c, int dif, int grau)
+
+        public Avaliacao(int idConfecao, int dif, int? ajuda, int grau)
         {
-            confecaoId = c.id;
+            confecaoId = idConfecao;
             dificuldade = dif;
             grauSatisfacao = grau;
             data = DateTime.Now;
-            utilidadeAjudas = null;
+            utilidadeAjudas = ajuda;
         }
 
         [ForeignKey("Confecao")] public int confecaoId { get; set; }
