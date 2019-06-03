@@ -92,6 +92,23 @@ namespace Il_Dolce_Chefferini.Controllers
             return c;
         }
 
+        // inicia passo, dado o id de uma confeçao
+        [HttpPost("{confecaoId}/ajuda")]
+        public ActionResult<Confecao> PedeAjuda(int confecaoId)
+        {
+            var c = _context.confecoes
+                .FirstOrDefault(e => e.id == confecaoId);
+
+            if (c == null)
+                return NoContent();
+
+            c.RequereAjuda();
+            _context.confecoes.Update(c);
+            _context.SaveChanges();
+
+            return Ok(c);
+        }
+
         // finaliza passo, dado o id de uma confecao
         [HttpGet("{confecaoId}/finaliza")]
         public ActionResult<Confecao> FinalizaPasso(int confecaoId)
