@@ -93,5 +93,10 @@ namespace Il_Dolce_Chefferini.Controllers
             var confecao = await response.Content.ReadAsAsync<Confecao>();
             return RedirectToAction("Index", "AvaliacaoView",new {idConfecao=confecaoId});
         }
+
+        public IActionResult Cancela()
+        {
+            return RedirectToAction("Index","UtilizadoresView");
+        }
     }
 }
