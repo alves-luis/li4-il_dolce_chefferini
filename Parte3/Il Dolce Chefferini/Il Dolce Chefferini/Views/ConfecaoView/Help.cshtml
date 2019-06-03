@@ -1,7 +1,7 @@
-﻿@model Il_Dolce_Chefferini.Models.Confecao
+﻿@model Il_Dolce_Chefferini.Dto.ConfecaoDto
 
 @{
-    var passo = @Model.receita.passos.ElementAt(@Model.passoAtual);
+    var passo = @Model.confecao.receita.passos.ElementAt(@Model.confecao.passoAtual);
 }
 
 
@@ -19,6 +19,24 @@
     <div class="justify-content-center row my-4">
         <iframe width="560" height="315" src=@passo.urlVideo frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
+
+    @if (Model.pre)
+    {
+        <div class="justify-content-center row my-4">
+            <a asp-controller="ConfecaoView" asp-action="ReturnPre" asp-route-confecaoId="@Model.confecao.id">
+                <button type="button" class="btn btn-info btn-lg">Voltar</button>
+            </a>
+        </div>
+    }
+
+    @if (!Model.pre)
+    {
+        <div class="justify-content-center row my-4">
+            <a asp-controller="ConfecaoView" asp-action="ReturnPasso" asp-route-confecaoId="@Model.confecao.id">
+                <button type="button" class="btn btn-info btn-lg">Voltar</button>
+            </a>
+        </div>
+    }
 
 </body>
 </html>

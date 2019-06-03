@@ -1,7 +1,7 @@
-﻿@model Il_Dolce_Chefferini.Models.Confecao
+﻿@model Il_Dolce_Chefferini.Dto.ConfecaoDto
 
 @{
-    var passo = @Model.receita.passos.ElementAt(@Model.passoAtual);
+    var passo = @Model.confecao.receita.passos.ElementAt(@Model.confecao.passoAtual);
 }
 
 <!DOCTYPE html>
@@ -16,7 +16,7 @@
 <body>
     <div class="justify-content-center row my-4">
 
-        <h1 align="center">Passo @Model.passoAtual</h1>
+        <h1 align="center">Passo @Model.confecao.passoAtual</h1>
     </div>
 
     <div class="justify-content-center row my-4">
@@ -25,17 +25,17 @@
 
     @if (passo.ingredientes.Count > 0)
     {
-    <div class="justify-content-center row my-4">
-        <div class="card text-center" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title">Ingredientes</h5>
-                @foreach (var r in passo.ingredientes)
-                {
-                    <p class="card-text"> @r.quantidade @r.ingrediente.nome (@r.unidade) </p>
-                }
+        <div class="justify-content-center row my-4">
+            <div class="card text-center" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Ingredientes</h5>
+                    @foreach (var r in passo.ingredientes)
+                    {
+                        <p class="card-text"> @r.quantidade @r.ingrediente.nome (@r.unidade) </p>
+                    }
+                </div>
             </div>
         </div>
-    </div>
     }
 
     <div class="justify-content-center row my-4">
@@ -46,23 +46,23 @@
         </div>
     </div>
 
-    @if (@Model.passoAtual +1 != @Model.receita.GetNumeroDePassos())
+    @if (@Model.confecao.passoAtual + 1 != @Model.confecao.receita.GetNumeroDePassos())
     {
-    <div class="justify-content-center row my-4">
-        <a asp-controller="ConfecaoView" asp-action="Termina" asp-route-confecaoId="@Model.id">
-            <button type="button" class="btn btn-primary btn-lg">Terminar Passo</button>
-        </a>
-    </div>
+        <div class="justify-content-center row my-4">
+            <a asp-controller="ConfecaoView" asp-action="Termina" asp-route-confecaoId="@Model.confecao.id">
+                <button type="button" class="btn btn-primary btn-lg">Terminar Passo</button>
+            </a>
+        </div>
     }
 
 
-    @if (@Model.passoAtual +1 == @Model.receita.GetNumeroDePassos())
+    @if (@Model.confecao.passoAtual + 1 == @Model.confecao.receita.GetNumeroDePassos())
     {
-    <div class="justify-content-center row my-4">
-        <a asp-controller="ConfecaoView" asp-action="Avalia" asp-route-confecaoId="@Model.id">
-            <button type="button" class="btn btn-primary btn-lg">Terminar Passo</button>
-        </a>
-    </div>
+        <div class="justify-content-center row my-4">
+            <a asp-controller="ConfecaoView" asp-action="Avalia" asp-route-confecaoId="@Model.confecao.id">
+                <button type="button" class="btn btn-primary btn-lg">Terminar Passo</button>
+            </a>
+        </div>
     }
 
 
@@ -70,7 +70,7 @@
     {
 
         <div class="justify-content-center row my-4">
-            <a asp-controller="ConfecaoView" asp-action="Help" asp-route-confecaoId="@Model.id">
+            <a asp-controller="ConfecaoView" asp-action="Help" asp-route-confecaoId="@Model.confecao.id" asp-route-status="@Model.pre">
                 <button type="button" class="btn btn-primary btn-lg">Ajuda</button>
             </a>
         </div>

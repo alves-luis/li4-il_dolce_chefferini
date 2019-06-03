@@ -73,7 +73,7 @@ namespace Il_Dolce_Chefferini.Controllers
             dto.ajuda = ajuda;
             dto.usouAjuda = usouAjuda;
 
-            return View("Ola",dto);
+            return View("Resultados",dto);
         }
     }
 }

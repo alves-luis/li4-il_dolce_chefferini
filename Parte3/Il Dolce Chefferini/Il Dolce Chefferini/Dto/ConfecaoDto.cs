@@ -3,18 +3,17 @@ using Il_Dolce_Chefferini.Models;
 
 namespace Il_Dolce_Chefferini.Dto
 {
-    public class AvaliacaoDto
+    public class ConfecaoDto
     {
 
         public bool pre { get; set; }
         public Confecao confecao { get; set; }
        
 
-        public AvaliacaoDto(Confecao c)
+        public ConfecaoDto(Confecao c)
         {
             confecao = c;
-            pre = false;
-
+            pre = true;
         }
     }
 }

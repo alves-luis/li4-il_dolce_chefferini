@@ -1,7 +1,7 @@
-﻿@model Il_Dolce_Chefferini.Models.Confecao
+﻿@model Il_Dolce_Chefferini.Dto.ConfecaoDto
 
 @{
-    var passo = @Model.receita.passos.ElementAt(@Model.passoAtual);
+    var passo = @Model.confecao.receita.passos.ElementAt(@Model.confecao.passoAtual);
 }
 
 <!DOCTYPE html>
@@ -16,7 +16,7 @@
 <body>
     <div class="justify-content-center row my-4">
 
-        <h1 align="center">Passo @Model.passoAtual</h1>
+        <h1 align="center">Passo @Model.confecao.passoAtual</h1>
     </div>
 
     <div class="justify-content-center row my-4">
@@ -48,7 +48,7 @@
 
 
     <div class="justify-content-center row my-4">
-        <a asp-controller="ConfecaoView" asp-action="Inicia" asp-route-confecaoId="@Model.id">
+        <a asp-controller="ConfecaoView" asp-action="Inicia" asp-route-confecaoId="@Model.confecao.id">
             <button type="button" class="btn btn-primary btn-lg">Iniciar Passo</button>
         </a>
     </div>
@@ -57,7 +57,7 @@
     {
 
         <div class="justify-content-center row my-4">
-            <a asp-controller="ConfecaoView" asp-action="Help" asp-route-confecaoId="@Model.id">
+            <a asp-controller="ConfecaoView" asp-action="Help" asp-route-confecaoId="@Model.confecao.id" asp-route-status="@Model.pre">
                 <button type="button" class="btn btn-primary btn-lg">Ajuda</button>
             </a>
         </div>
