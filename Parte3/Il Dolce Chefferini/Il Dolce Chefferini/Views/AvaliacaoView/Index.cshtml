@@ -8,13 +8,13 @@
 </head>
 <body>
 
-    <div class="row justify-content-center my-2">
+    <div class="row justify-content-center my-3">
         <h1 class="mx-3">Avaliação</h1>
     </div>
-    <div class="row justify-content-center my-2">
+    <div class="row justify-content-center my-3">
         <h3> Dificuldade </h3>
     </div>
-    <div class="row justify-content-center my-2">
+    <div class="row justify-content-center my-3">
 
         <a asp-controller="AvaliacaoView" asp-action="AvaliaDif" asp-route-idConfecao="@Model.idConfecao" asp-route-dif="1" asp-route-ajuda="@Model.ajuda" asp-route-satis="@Model.satisfacao" asp-route-usouAjuda="@Model.usouAjuda">
             <img src="/pictures/estrela.png" class="img-responsive" width="58" height="58">
@@ -36,10 +36,10 @@
 
         @if (@Model.usouAjuda)
     {
-    <div class="row justify-content-center my-2">
+    <div class="row justify-content-center my-3">
         <h3> Utilidade das ajudas </h3>
     </div>
-    <div class="row justify-content-center my-2">
+    <div class="row justify-content-center my-3">
 
         <a asp-controller="AvaliacaoView" asp-action="AvaliaAjuda" asp-route-idConfecao="@Model.idConfecao" asp-route-ajuda="1" asp-route-dif="@Model.dificuldade" asp-route-satis="@Model.satisfacao" asp-route-usouAjuda="@Model.usouAjuda">
             <img src="/pictures/estrela.png" class="img-responsive" width="58" height="58">
@@ -60,10 +60,10 @@
 
         }
 
-    <div class="row justify-content-center my-2">
+    <div class="row justify-content-center my-3">
         <h3> Grau de Satisfaçao </h3>
     </div>
-    <div class="row justify-content-center my-2">
+    <div class="row justify-content-center my-3">
 
 
         <a asp-controller="AvaliacaoView" asp-action="AvaliaSatis" asp-route-idConfecao="@Model.idConfecao" asp-route-satis="1" asp-route-dif="@Model.dificuldade" asp-route-ajuda="@Model.ajuda" asp-route-usouAjuda="@Model.usouAjuda">
@@ -84,7 +84,7 @@
     </div>
 
 
-    <div class="row justify-content-center my-2">
+    <div class="row justify-content-center my-5">
         <a asp-action="Confirma" asp-controller="AvaliacaoView" asp-route-idConfecao="@Model.idConfecao" asp-route-satis="@Model.satisfacao" asp-route-dif="@Model.dificuldade" asp-route-ajuda="@Model.ajuda" asp-route-usouAjuda="@Model.usouAjuda">
             <button type="button" class="btn btn-primary btn-lg">Confirmar</button>
         </a>

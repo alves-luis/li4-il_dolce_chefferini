@@ -8,39 +8,45 @@
 </head>
 <body>
 
-    <div class="row justify-content-center my-2">
+    <div class="row justify-content-center my-3">
         <h1 class="mx-3">Avaliação</h1>
     </div>
 
 
-    <div class="row justify-content-center my-2">
+    <div class="row justify-content-center my-3">
         <h3> Dificuldade </h3>
     </div>
-    <div class="row justify-content-center my-2">
-        <h4>@Model.dificuldade</h4>
+    <div class="row justify-content-center my-3">
+        @for (var i = 0; i < @Model.dificuldade; i++){
+            <img src="/pictures/estrela.png" class="img-responsive" width="58" height="58">
+        }
     </div>
         
 
         @if (@Model.usouAjuda)
     {
-    <div class="row justify-content-center my-2">
+    <div class="row justify-content-center my-3">
         <h3> Utilidade das ajudas </h3>
     </div>
-    <div class="row justify-content-center my-2">
-        <h4>@Model.ajuda</h4>
+    <div class="row justify-content-center my-3">
+        @for (var i = 0; i < @Model.ajuda; i++){
+            <img src="/pictures/estrela.png" class="img-responsive" width="58" height="58">
+        }
     </div>
 
 }
 
-    <div class="row justify-content-center my-2">
+    <div class="row justify-content-center my-3">
         <h3> Grau de Satisfaçao </h3>
     </div>
-    <div class="row justify-content-center my-2">
-        <h4>@Model.satisfacao</h4>
+    <div class="row justify-content-center my-3">
+         @for (var i = 0; i < @Model.satisfacao; i++){
+            <img src="/pictures/estrela.png" class="img-responsive" width="58" height="58">
+        }
     </div>
 
 
-    <div class="row justify-content-center my-2">
+    <div class="row justify-content-center my-5">
         <a asp-action="Index" asp-controller="UtilizadoresView">
             <button type="button" class="btn btn-primary btn-lg">Sair</button>
         </a>
