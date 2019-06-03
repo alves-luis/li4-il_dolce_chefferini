@@ -41,6 +41,7 @@ namespace Il_Dolce_Chefferini.Controllers
                 .Include(conf => conf.receita)
                 .Include(conf => conf.receita.passos)
                 .Include("receita.passos.ingredientes.ingrediente")
+                .Include(conf => conf.tempoEmPasso)
                 .First(e => e.id == id);
             if (c == null)
                 return NoContent();
